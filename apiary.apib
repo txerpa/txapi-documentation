@@ -1,0 +1,1383 @@
+FORMAT: 1A
+HOST: https://api.txerpa.com/v1
+
+# Txerpa API v1
+This describes the resources that make up the official Txerpa API v1. If you have any problems or requests please contact support.
+
+## Schema
+All API access is over HTTPS, and accessed from the `https://api.txerpa.com`. All data is sent and received as JSON following JSON API specification where possible. We strongly encourage you to read the [complet specification](http://jsonapi.org/format/) 
+
+**TO-DO: completar descripción**
+
+Blank fields are included as `null` instead of being omitted.
+
+All timestamps return in the following format: `DD-MM-YYYY HH:MM:SS`
+    
+## Parameters
+Many API methods take optional parameters. For GET requests, any parameters not specified as a segment in the path can be passed as an HTTP query string parameter:
+
+```
+ 
+ curl -i 'https://api.txerpa.com/v1/accounting/entries/1/records?estado=asentado'
+  
+```
+
+In this example, the '1' value is provided for the `:entry_pk` parameter in the path while `:state` is passed in the query string.
+
+## Root Endpoint
+You can issue a `GET` request to the root endpoint to get API schema formatted with [Core API](http://www.coreapi.org) format-independent Document Object Model:
+
+```
+  
+ curl -i https://api.txerpa.com/v1
+  
+```
+
+## Client Errors
+**TO-DO**
+
+## HTTP Verbs
+Where possible, API v1 strives to use appropriate HTTP verbs for each action.
+
+| Verb | Description |
+| --- | --- |
+| HEAD | Can be issued against any resource to get just the HTTP header info. |
+| GET | Used for retrieving resources. |
+| POST | Used for creating resources. |
+| PATCH | Used for updating **any** or **all** of a resource’s attributes. |
+| DELETE | Used for deleting resources. |
+
+## Authentication
+There are only way to authenticate through Txerpa API v1. Requests that require authentication will return `401 Unauthorized` if authentication credentials were not provided or invalid credentials.
+
+### JWT Token
+
+```
+  
+ curl -H "Authorization: JWT JWT-TOKEN" -i https://api.txerpa.com/v1
+  
+```
+
+Read more about [JWT](https://jwt.io/).
+
+## Pagination
+Requests that return multiple items will be paginated to 10 items by default. You can specify further pages with the `?page` parameter. For some resources, you can also set a custom page size up to 100 with the `?page_size` parameter.
+
+```
+ 
+ curl -i 'https://api.txerpa.com/v1/accounting/entries?page=2&page_size=50'
+  
+```
+
+Note that page numbering is 1-based and that omitting the `?page` parameter will return the first page.
+
+## Rate Limiting
+**TO-DO**
+
+## Conditional requests
+**TO-DO**
+
+## Cross Origin Resource Sharing
+The API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin. You can read the [CORS W3C Recommendation](https://www.w3.org/TR/cors/), or [this intro](https://code.google.com/archive/p/html5security/wikis/CrossOriginRequestSecurity.wiki) from the HTML 5 Security Guide.
+
+Here's a sample request sent from a browser hitting `http://example.com`:
+
+```
+ 
+ curl -i https://api.txerpa.com -H "Origin: http://example.com"
+ HTTP/1.0 200 OK
+ Access-Control-Allow-Origin: *
+ Access-Control-Expose-Headers: Content-Disposition
+ 
+```
+
+This is what the CORS preflight request looks like:
+
+```
+ 
+ curl -i https://api.txerpa.com -H "Origin: http://example.com"
+ HTTP/1.0 200 OK
+ Access-Control-Allow-Origin: *
+ Access-Control-Allow-Headers: accept, accept-encoding, authorization, content-type, dnt, origin, user-agent, x-csrftoken, x-requested-with
+ Access-Control-Expose-Headers: Content-Disposition
+ Access-Control-Allow-Methods: DELETE, GET, OPTIONS, PATCH, POST, PUT
+ Access-Control-Expose-Headers: Content-Disposition
+ Access-Control-Max-Age: 86400
+ 
+```
+
+# Group Authentication
+**TO-DO** Descripció Authentication API
+
+# Auth [/auth]
+Use the `/auth` resource to create an JWT access token. You can also refresh it.
+
+## Create [POST]
+
++ Attributes
+    + username (string, required)
+    + password (string, required)
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+
+    + Body
+
+            {
+                "data": {
+                    "type": "obtain_json_web_token",
+                    "attributes": {
+                        "username": "mateu",
+                        "password": "secret"
+                    }
+                }
+            }
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTMzODU3MDQsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5MzM4NjAwNH0.JRRKWSfAPm74TgkfmwZYUE3D4janoxesiG2nhC9WBz4"
+                }
+            }
+
+## Refresh [POST /auth/refresh]
+
++ Attributes
+    + token (string, required) - Token to be refreshed
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "refresh_json_web_token",
+                    "attributes": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODczMDgsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzYwOH0.FMBAhM4lCwPYewgXdKJcO6kuswZZMsqKT4rA21JmuAg"
+                    }
+                }
+            }
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTMzODU3MDQsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5MzM4NjAwNH0.JRRKWSfAPm74TgkfmwZYUE3D4janoxesiG2nhC9WBz4"
+                }
+            }
+
+
+
+
+# Group Accounting
+**TO-DO** Descripció Accounting API
+
+# Accounts [/accounting/accounts{?page,page_size,tipo,search,ordering}]
+**TO-DO** Descripció Accounts
+
++ Attributes (Account)
+
+## List [GET]
+
++ Parameters
+    + page (number, optional)
+
+        A page number within the paginated result set.
+
+    + page_size (number, optional)
+
+        Number of results to return per page.
+
+    + tipo (string, optional)
+    
+        Filter by tipo field.
+
+    + search (string, optional)
+
+        A search term.
+
+    + ordering (string, optional)
+
+        Which field to use when ordering the results.
+        
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/accounting/accounts?page=1",
+                       "last":"hhttps://api.txerpa.com/accounting/accounts?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data":[
+                        {
+                            "type": "account",
+                            "id": "5",
+                            "attributes":{
+                                "name": "Capital social",
+                                "codigo": "1000000000",
+                                "descripcion": null,
+                                "tipo": "financiacion",
+                                "parent": null,
+                            }
+                        },
+                        {
+                            "type": "account",
+                            "id": "7",
+                            "attributes":{
+                                "name": "Fondo social",
+                                "codigo": "1010000000",
+                                "descripcion": null,
+                                "tipo": "financiacion",
+                                "parent": null,
+                            }
+                        }
+                    ],
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":2
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "account",
+                    "attributes": {
+                        "name": "Capital",
+                        "codigo": "1020000000",
+                        "tipo": "financiacion"
+                    }
+                }
+            }
+            
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    {
+                        "type": "account",
+                         "id": "9",
+                        "attributes":{
+                            "name": "Capital",
+                            "codigo": "1020000000",
+                            "descripcion": null,
+                            "tipo": "financiacion",
+                            "parent": null,
+                        }
+                    }
+                }
+            }
+
+## Retrive [GET /accounting/accounts/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the account
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    {
+                        "type": "account",
+                        "id": "9",
+                        "attributes":{
+                            "name": "Capital",
+                            "codigo": "1020000000",
+                            "descripcion": null,
+                            "parent": null,
+                            "tipo": "financiacion"
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /accounting/accounts/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the account
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    {
+                        "type": "account",
+                        "id": "9",
+                        "attributes":{
+                            "descripcion": "new description",
+                        }
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    {
+                        "type": "account",
+                        "id": "9",
+                        "attributes":{
+                            "name": "Capital",
+                            "codigo": "1020000000",
+                            "descripcion": "new description",
+                            "parent": null,
+                            "tipo": "financiacion"
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /accounting/accounts/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the account
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
+
+
+# Account Categories [/accounting/account_categories{?page,page_size,search,ordering}]
+
+**TO-DO** Descripció Accounting API
+
++ Attributes (Account Category)
+
+## List [GET]
++ Parameters
+    + page (number, optional)
+    
+            A page number within the paginated result set.
+    
+    + page_size (number, optional)
+    
+            Number of results to return per page.
+    
+    + search (string, optional)
+    
+            A search term.
+      
+    + ordering (string, optional)
+    
+            Which field to use when ordering the results.
+        
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/accounting/account_categories?page=1",
+                       "last":"hhttps://api.txerpa.com/accounting/account_categories?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data":[
+                        {
+                            "type": "account_category",
+                            "id": "1",
+                            "attributes": {
+                                "nombre": "Alquileres",
+                                "descripcion": "Arrendamientos y cánones"
+                            },
+                            "relationships": {
+                                "cuenta": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "899"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "account_category",
+                            "id": "2",
+                            "attributes": {
+                                "nombre": "Reparaciones",
+                                "descripcion": "Reparaciones y conservación"
+                            },
+                            "relationships": {
+                                "cuenta": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "901"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":2
+                        }
+                    }
+                }
+
+
+## Retrive [GET /accounting/account_categories/{id}]
+
++ Parameters
+    + id (required, number)
+    
+        A unique integer value identifying this account category
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    {
+                        "type": "account_category",
+                        "id": "1",
+                        "attributes": {
+                            "nombre": "Alquileres",
+                            "descripcion": "Arrendamientos y cánones"
+                        },
+                        "relationships": {
+                            "cuenta": {
+                                "data": {
+                                    "type": "account",
+                                    "id": "899"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+# Entries [/accounting/entries]
+**TO-DO** Descripció Entries
+
++ Attributes (Entry)
+
+## List [GET]
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/accounting/entries?page=1",
+                       "last":"hhttps://api.txerpa.com/accounting/entries?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data":[
+                        {
+                            "type": "entry",
+                            "id": "1",
+                            "attributes":{
+                                "name": "Invoice [1]",
+                                "numero": 1,
+                                "fecha": "12-12-2016",
+                                "estado": "asentado"
+                            },
+                            "relationships": {
+                                "libro": {
+                                    "data": {
+                                        "type": "journal",
+                                        "id": "1"
+                                    }
+                                },
+                                "periodo": {
+                                    "data": {
+                                        "type": "accounting_period",
+                                        "id": "1"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "entry",
+                    "attributes": {
+                        "name": "Invoice [2]",
+                        "numero": 2,
+                        "fecha": "12-12-2016",
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Invoice [2]",
+                        "numero": 2,
+                        "fecha": "12-12-2016",
+                        "estado": "borrador",
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Retrive [GET /accounting/entries/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the entry
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Invoice [2]",
+                        "numero": 2,
+                        "fecha": "12-12-2016",
+                        "estado": "borrador",
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /accounting/entries/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the entry
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry",
+                    "id": "2",
+                    "attributes": {
+                        "fecha": "16-12-2017",
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Invoice [2]",
+                        "numero": 2,
+                        "fecha": "16-12-2016",
+                        "estado": "borrador",
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /accounting/entries/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the entry
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+## Validate Entry [POST /accounting/entries/{id}/validations]
+
++ Parameters
+    + id (required, number) ... Id of the entry
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Invoice [2]",
+                        "numero": 2,
+                        "fecha": "16-12-2016",
+                        "estado": "asentado",
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }      
+
+## Unvalidate Entry [DELETE /accounting/entries/{id}/validations]
+
++ Parameters
+    + id (required, number) ... Id of the entry
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Invoice [2]",
+                        "numero": 2,
+                        "fecha": "16-12-2016",
+                        "estado": "borrador",
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }     
+
+ 
+# Entry Records [/accounting/entries/{entry_id}/records]
+**TO-DO** Descripció Entry Records
+
++ Parameters
+    + entry_id (required, number) ... Id of the entry
+    
++ Attributes (Entry Record)
+
+## List [GET]
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links": {
+                       "first": "https://api.txerpa.com/accounting/entries/1/records?page=1",
+                       "last": "hhttps://api.txerpa.com/accounting/entries/1/records?page=1",
+                       "next": null,
+                       "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "entry_record",
+                            "id": "1",
+                            "attributes":{
+                                "name": "venta(1):W16/00000001",
+                                "debe": "0.000000",
+                                "haber": "25.640000",
+                                "fecha": "12-12-2016",
+                                "recc": false,
+                                "estado": "asentado"
+                            },
+                            "relationships": {
+                                "analytical_lines": {
+                                    "data": []
+                                },
+                                "cuenta": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "1"
+                                    }
+                                },
+                                "partner": {
+                                    "data": {
+                                        "type": "partner",
+                                        "id": "1"
+                                    }
+                                },
+                                "asiento": {
+                                    "data": {
+                                        "type": "entry",
+                                        "id": "1"
+                                    }
+                                },
+                                "conciliacion": {
+                                    "data": null
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "entry_record",
+                    "attributes":{
+                        "name": "Cobro W16/00000001",
+                        "debe": "25.640000",
+                        "haber": "0.000000",
+                        "fecha": "12-12-2016"
+                    },
+                    "relationships": {
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "1"
+                            }
+                        },
+                        "partner": {
+                            "data": {
+                                "type": "partner",
+                                "id": "1"
+                            }
+                        },
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": {
+                        "type": "entry_record",
+                        "id": "2",
+                        "attributes":{
+                            "name": "Cobro W16/00000001",
+                            "debe": "25.640000",
+                            "haber": "0.000000",
+                            "fecha": "12-12-2016",
+                            "recc": false,
+                            "estado": "borrador"
+                        },
+                        "relationships": {
+                            "analytical_lines": {
+                                "data": []
+                            },
+                            "cuenta": {
+                                "data": {
+                                    "type": "account",
+                                    "id": "1"
+                                }
+                            },
+                            "partner": {
+                                "data": {
+                                    "type": "partner",
+                                    "id": "1"
+                                }
+                            },
+                            "asiento": {
+                                "data": {
+                                    "type": "entry",
+                                    "id": "1"
+                                }
+                            },
+                            "conciliacion": {
+                                "data": null
+                            }
+                        }
+                    }
+                }
+
+## Retrive [GET /accounting/entries/{entry_id}/records/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the entry record
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry_record",
+                    "id": "2",
+                    "attributes":{
+                        "name": "Cobro W16/00000001",
+                        "debe": "25.640000",
+                        "haber": "0.000000",
+                        "fecha": "12-12-2016",
+                        "recc": false,
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "analytical_lines": {
+                            "data": []
+                        },
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "1"
+                            }
+                        },
+                        "partner": {
+                            "data": {
+                                "type": "partner",
+                                "id": "1"
+                            }
+                        },
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "1"
+                            }
+                        },
+                        "conciliacion": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /accounting/entries/{entry_id}/records/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the entry record
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry",
+                    "id": "2",
+                    "relationships": {
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "2"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry_record",
+                    "id": "2",
+                    "attributes":{
+                        "name": "Cobro W16/00000001",
+                        "debe": "25.640000",
+                        "haber": "0.000000",
+                        "fecha": "12-12-2016",
+                        "recc": false,
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "analytical_lines": {
+                            "data": []
+                        },
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "2"
+                            }
+                        },
+                        "partner": {
+                            "data": {
+                                "type": "partner",
+                                "id": "1"
+                            }
+                        },
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "1"
+                            }
+                        },
+                        "conciliacion": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /accounting/entries/{entry_id}/records/{id}]
+
++ Parameters
+    + id (required, number) ... Id of the entry record
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+# Tax Entry Records [/accounting/entries/{entry_id}/tax_records{?page,page_size,search,ordering}]
+**TO-DO** Descripció Tax Entry Records
+
+
++ Parameters
+    + entry_id (required)
+        
+        A unique integer value identifying parent entry
+
++ Attributes (Tax Entry Record)
+
+## List [GET]
++ Parameters
+    + page (number, optional)
+
+        A page number within the paginated result set.
+
+    + page_size (number, optional)
+
+        Number of results to return per page.
+
+    + search (string, optional)
+
+        A search term.
+
+    + ordering (string, optional)
+
+        Which field to use when ordering the results.
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+
+            {
+               "links":{
+                   "first":"https://api.txerpa.com/accounting/entries/1/tax_records?page=1",
+                   "last":"hhttps://api.txerpa.com/accounting/entries/1/tax_records?page=1",
+                   "next":null,
+                   "prev":null
+                },
+                "data":[
+                    {
+                        "type": "tax_entry_record",
+                        "id": "1",
+                        "attributes":{
+                            "name": "IVA 21% Factura",
+                            "base": "29.700000",
+                            "cuota": "6.240000",
+                            "state": "valido"
+                        },
+                        "relationships": {
+                            "impuesto": {
+                                "data": {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            },
+                            "tercero": {
+                                "data": {
+                                    "type": "partner",
+                                    "id": "1"
+                                }
+                            },
+                            "periodo": {
+                                "data": null
+                            },
+                            "liquidacion": {
+                                "data": null
+                            },
+                        }
+                    }
+                ],
+                "meta":{
+                    "pagination":{
+                        "page":1,
+                        "pages":1,
+                        "count":2
+                    }
+                }
+            }
+
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "tax_entry_record",
+                    "attributes":{
+                        "name": "IVA 21% Factura",
+                        "base": "29.700000",
+                        "cuota": "6.240000",
+                    },
+                    "relationships": {
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "1"
+                            }
+                        }
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+    
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": {
+                        "type": "tax_entry_record",
+                        "id": "1",
+                        "attributes":{
+                            "name": "IVA 21% Factura",
+                            "base": "29.700000",
+                            "cuota": "6.240000",
+                            "state": "valido"
+                        },
+                        "relationships": {
+                            "impuesto": {
+                                "data": {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            },
+                            "tercero": {
+                                "data": {
+                                    "type": "partner",
+                                    "id": "1"
+                                }
+                            },
+                            "periodo": {
+                                "data": null
+                            },
+                            "liquidacion": {
+                                "data": null
+                            },
+                        }
+                    }
+                }
+                
+# Data Structures
+
+## Account (object)
++ name (required)
++ codigo (required) - **Unique**, **Maximum length: 20**
++ tipo (enum[string], required)
+    + Members
+        + `vista`
+        + `inventario`
+        + `activo`
+        + `financiacion`
+        + `financiera`
+        + `tercero`
+        + `ingreso`
+        + `gasto`
+        + `otros`
+        + `apagar`
+        + `acobrar`
+        + `impuesto`
++ descripcion (string)
++ parent (Account) - Account parent.
+
+## Account Category (object)
++ nombre (string)
++ descripcion (string)
++ cuenta (Account) - Related account.
+
+## Entry (object)
++ name (string, required)
++ numero (number, optional) - Positive
++ fecha (string, required) - **Format: `date`**, **Default: `now`**
++ libro (Journal, required)
++ periodo (Accounting Period, required)
++ estado (enum[string]) - Read only property
+    + Members
+        + `borrador`
+        + `asentado`
+        + `auditado`
+
+## Entry Record (object)
++ name: A entry record (required)
++ debe: 0.000000 (required) - Decimal value, max digits 18, decimal places 6
++ haber: 53.000000 (required) - Decimal value, max digits 18, decimal places 6
++ cuenta (Account, required)
++ partner (Partner)
++ asiento (Entry, required)
++ fecha: `12-12-2016` (required) - Date field
++ recc: false (boolean, required) - Default False
++ conciliacion (Conciliation)
++ estado: borrador (enum[string]) - Read only property
+    + Members
+        + `borrador`
+        + `asentado`
+        
+## Tax Entry Record (object)
++ name: A tax entry record (required)
++ base: 0.000000 (required) - Decimal value, max digits 18, decimal places 6
++ cuota: 53.000000 (required) - Decimal value, max digits 18, decimal places 6
++ impuesto (Tax, required)
++ periodo (Accounting Period, required)
++ state: borrador (enum[string]) - Read only property
+    + Members
+        + `borrador`
+        + `asentado`
++ asiento (Entry, required)
++ tercero (Partner)
++ liquidacion (Tax Filing)
+
+## Journal (object)
++ name (string, required)
+
+## Accounting Period (object)
++ name (string)
++ anyo_fiscal (Fiscal Year)
++ dia_inicio (string)
++ dia_fin (string)
++ limite_domiciliacion (string)
++ limite_presentacion (string)
++ especial (boolean)
++ duracion_periodos (number)
++ cerrado (boolean)
+
+## Fiscal Year (object)
++ name (string)
++ anyo (string)
+
+## Conciliation (object)
+
+## Partner (object)
+
+## Tax
+
+## Tax Filing (object)
