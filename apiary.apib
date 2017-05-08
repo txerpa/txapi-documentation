@@ -188,15 +188,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## List [GET]
 
 + Parameters
-    + page (number) ... A page number within the paginated result set.
+    + page (number, optional) ... A page number within the paginated result set.
 
-    + page_size (number) ... Number of results to return per page.
+    + page_size (number, optional) ... Number of results to return per page.
 
-    + tipo  ... Filter by tipo field.
+    + tipo (optional) ... Filter by tipo field.
 
-    + search ... A search term.
+    + search (optional) ... A search term.
 
-    + ordering ... Which field to use when ordering the results.
+    + ordering (optional) ... Which field to use when ordering the results.
         
 + Request (application/vnd.api+json)
     + Headers
@@ -289,7 +289,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Retrive [GET /accounting/accounts/{id}]
 
 + Parameters
-    + id (number, required) ... A unique integer value identifying this account
+    + id (number) ... A unique integer value identifying this account
 
 + Request (application/vnd.api+json)
     + Headers
@@ -318,7 +318,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Update [PATCH /accounting/accounts/{id}]
 
 + Parameters
-    + id (number, required) ... A unique integer value identifying this account
+    + id (number) ... A unique integer value identifying this account
 
 + Request (application/vnd.api+json)
     + Headers
@@ -359,7 +359,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Delete [DELETE /accounting/accounts/{id}]
 
 + Parameters
-    + id (number, required) ... A unique integer value identifying this account
+    + id (number) ... A unique integer value identifying this account
 
 + Request (application/vnd.api+json)
     + Headers
@@ -381,13 +381,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## List [GET]
 + Parameters
-    + page (number) ... A page number within the paginated result set.
+    + page (number, optional) ... A page number within the paginated result set.
     
-    + page_size (number) ... Number of results to return per page.
+    + page_size (number, optional) ... Number of results to return per page.
     
-    + search ... A search term.
+    + search (optional) ... A search term.
       
-    + ordering ... Which field to use when ordering the results.
+    + ordering (optional) ... Which field to use when ordering the results.
         
 + Request (application/vnd.api+json)
     + Headers
@@ -484,12 +484,29 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                 }
             }
 
-# Entries [/accounting/entries]
+# Entries [/accounting/entries{?page,page_size,libro,estado,fecha__gte,fecha__lte,search,ordering}]
 **TO-DO** Descripció Entries
 
 + Attributes (Entry)
 
 ## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + libro (optional) ... Filter by *libro* field using equal comparison.
+
+    + estado (optional) ... Filter by *estado* field using equal comparison.
+
+    + fecha__gte (optional) ... Filter by *fecha* field using greater or equal comparison.
+    
+    + fecha__lte (optional) ... Filter by *fecha* field using less or equal comparison.
+
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
 + Request (application/vnd.api+json)
     + Headers
 
@@ -610,7 +627,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Retrive [GET /accounting/entries/{id}]
 
 + Parameters
-    + id (number, required) ... A unique integer value identifying this entry
+    + id (number) ... A unique integer value identifying this entry
 
 + Request (application/vnd.api+json)
     + Headers
@@ -651,7 +668,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Update [PATCH /accounting/entries/{id}]
 
 + Parameters
-    + id (number, required) ... A unique integer value identifying this entry
+    + id (number) ... A unique integer value identifying this entry
 
 + Request (application/vnd.api+json)
     + Headers
@@ -801,7 +818,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
             }     
 
  
-# Entry Records [/accounting/entries/{entry_id}/records]
+# Entry Records [/accounting/entries/{entry_id}/records{?page,page_size,search,ordering}]
 **TO-DO** Descripció Entry Records
 
 + Parameters
@@ -810,6 +827,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Attributes (Entry Record)
 
 ## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
 + Request (application/vnd.api+json)
     + Headers
 
@@ -1111,20 +1137,19 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 
 + Parameters
-    + entry_id (required) ... A unique integer value identifying parent entry
+    + entry_id (number, required) ... A unique integer value identifying parent entry
 
 + Attributes (Tax Entry Record)
 
 ## List [GET]
-
 + Parameters
-    + page (number) ... A page number within the paginated result set.
+    + page (number, optional) ... A page number within the paginated result set.
 
-    + page_size (number) ... Number of results to return per page.
+    + page_size (number, optional) ... Number of results to return per page.
 
-    + search ... A search term.
+    + search (optional) ... A search term.
 
-    + ordering ... Which field to use when ordering the results.
+    + ordering (optional) ... Which field to use when ordering the results.
 
 + Request (application/vnd.api+json)
     + Headers
@@ -1417,7 +1442,962 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Response 204
 
 
+# Journals [/accounting/journals{?page,page_size,search,ordering}]
+**TO-DO** Descripció Journals
+
++ Attributes (Journal)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/accounting/journals?page=1",
+                       "last":"hhttps://api.txerpa.com/accounting/journals?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data":[
+                        {
+                            "type": "journal",
+                            "id": "1",
+                            "attributes": {
+                                "name": "Libro diario"
+                            }
+                        }
+                    ],
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "journal",
+                    "attributes": {
+                        "name": "Libro"
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "journal",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Libro"
+                    }
+                }
+            }
+
+## Retrive [GET /accounting/journals/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this journal
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "journal",
+                    "id": "1",
+                    "attributes": {
+                        "name": "Libro"
+                    }
+                }
+            }
+
+## Update [PATCH /accounting/journals/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this journal
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "journal",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Journal"
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "journal",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Journal"
+                    }
+                }
+            }
+
+## Delete [DELETE /accounting/journals/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this journal
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
+# Assets [/accounting/assets{?page,page_size,search,ordering}]
+**TO-DO** Descripció Assets
+
++ Attributes (Asset)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/accounting/assets?page=1",
+                       "last":"hhttps://api.txerpa.com/accounting/assets?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data":[
+                        {
+                            "type": "asset",
+                            "id": "1",
+                            "attributes": {
+                                "name": "",
+                                "fecha": "22-02-2017",
+                                "fecha_venta": null,
+                                "valor_inicial_currency": "EUR",
+                                "valor_inicial": "624.13",
+                                "valor_residual_currency": "EUR",
+                                "valor_residual": "0.0",
+                                "porcentaje_amortizacion": "26.00",
+                                "t_amortizacion": null,
+                                "intervalo": 3,
+                                "estado": "borrador"
+                            },
+                            "relationships": {
+                                "libro": {
+                                    "data": {
+                                        "type": "journal",
+                                        "id": "1"
+                                    }
+                                },
+                                "tipo": {
+                                    "data": {
+                                        "type": "asset_type",
+                                        "id": "7"
+                                    }
+                                },
+                                "factura": {
+                                    "data": {
+                                        "type": "invoice",
+                                        "id": "86617"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "asset",
+                    "attributes": {
+                        "name": "Asset 1",
+                        "fecha": "22-02-2017",
+                        "valor_inicial": "500.40",
+                        "valor_residual": "0",
+                        "porcentaje_amortizacion": "26.00"
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "tipo": {
+                            "data": {
+                                "type": "asset_type",
+                                "id": "7"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "asset",
+                    "id": "33",
+                    "attributes": {
+                        "name": "Asset 1",
+                        "fecha": "22-02-2017",
+                        "fecha_venta": null,
+                        "valor_inicial_currency": "EUR",
+                        "valor_inicial": 500.4,
+                        "valor_residual_currency": "EUR",
+                        "valor_residual": 0.0,
+                        "porcentaje_amortizacion": "26.00",
+                        "t_amortizacion": null,
+                        "intervalo": 3,
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "tipo": {
+                            "data": {
+                                "type": "asset_type",
+                                "id": "7"
+                            }
+                        },
+                        "factura": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+## Retrive [GET /accounting/assets/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this asset
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "asset",
+                    "id": "32",
+                    "attributes": {
+                        "name": "Componentes de PC",
+                        "fecha": "27-03-2017",
+                        "fecha_venta": null,
+                        "valor_inicial_currency": "EUR",
+                        "valor_inicial": "431.07",
+                        "valor_residual_currency": "EUR",
+                        "valor_residual": "0.0",
+                        "porcentaje_amortizacion": "26.00",
+                        "t_amortizacion": null,
+                        "intervalo": 3,
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "tipo": {
+                            "data": {
+                                "type": "asset_type",
+                                "id": "7"
+                            }
+                        },
+                        "factura": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "219547"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /accounting/assets/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this asset
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "asset",
+                    "id": "33",
+                    "attributes": {
+                        "intervalo": "12"
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "asset",
+                    "id": "32",
+                    "attributes": {
+                        "name": "Componentes de PC",
+                        "fecha": "27-03-2017",
+                        "fecha_venta": null,
+                        "valor_inicial_currency": "EUR",
+                        "valor_inicial": "431.07",
+                        "valor_residual_currency": "EUR",
+                        "valor_residual": "0.0",
+                        "porcentaje_amortizacion": "26.00",
+                        "t_amortizacion": null,
+                        "intervalo": 12,
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "tipo": {
+                            "data": {
+                                "type": "asset_type",
+                                "id": "7"
+                            }
+                        },
+                        "factura": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "219547"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /accounting/assets/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this asset
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
+## Validate Asset [POST /accounting/assets/{id}/validations]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this asset
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "asset",
+                    "id": "34",
+                    "attributes": {
+                        "name": "Asset 1",
+                        "fecha": "22-02-2017",
+                        "fecha_venta": null,
+                        "valor_inicial_currency": "EUR",
+                        "valor_inicial": 500.4,
+                        "valor_residual_currency": "EUR",
+                        "valor_residual": 0.0,
+                        "porcentaje_amortizacion": "26.00",
+                        "t_amortizacion": null,
+                        "intervalo": 3,
+                        "estado": "proceso"
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "tipo": {
+                            "data": {
+                                "type": "asset_type",
+                                "id": "7"
+                            }
+                        },
+                        "factura": {
+                            "data": null
+                        }
+                    }
+                }
+            } 
+
+## Unvalidate Asset [DELETE /accounting/assets/{id}/validations]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this asset
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "asset",
+                    "id": "34",
+                    "attributes": {
+                        "name": "Asset 1",
+                        "fecha": "22-02-2017",
+                        "fecha_venta": null,
+                        "valor_inicial_currency": "EUR",
+                        "valor_inicial": 500.4,
+                        "valor_residual_currency": "EUR",
+                        "valor_residual": 0.0,
+                        "porcentaje_amortizacion": "26.00",
+                        "t_amortizacion": null,
+                        "intervalo": 3,
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        },
+                        "tipo": {
+                            "data": {
+                                "type": "asset_type",
+                                "id": "7"
+                            }
+                        },
+                        "factura": {
+                            "data": null
+                        }
+                    }
+                }
+            } 
+            
+# Amortizations [/accounting/assets/{asset_id}/amortizations{?page,page_size,search,ordering}]
+**TO-DO** Descripció Amortizations
+
++ Parameters
+    + asset_id (required, number) ... A unique integer value identifying this asset amortization parent
+    
++ Attributes (Amortization)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links": {
+                       "first": "https://api.txerpa.com/accounting/assets/1/amortizations?page=1",
+                       "last": "hhttps://api.txerpa.com/accounting/assets/1/amortizations?page=1",
+                       "next": null,
+                       "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "amortization",
+                            "id": "289",
+                            "attributes": {
+                                "name": "Amortization 3",
+                                "fecha": "22-05-2017",
+                                "cantidad_currency": "EUR",
+                                "cantidad": 100.0,
+                                "state": "borrador"
+                            },
+                            "relationships": {
+                                "activo": {
+                                    "data": {
+                                        "type": "asset",
+                                        "id": "39"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "amortization",
+                            "id": "288",
+                            "attributes": {
+                                "name": "Amortization 2",
+                                "fecha": "22-08-2017",
+                                "cantidad_currency": "EUR",
+                                "cantidad": 100.0,
+                                "state": "borrador"
+                            },
+                            "relationships": {
+                                "activo": {
+                                    "data": {
+                                        "type": "asset",
+                                        "id": "39"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "amortization",
+                            "id": "287",
+                            "attributes": {
+                                "name": "Amortization 1",
+                                "fecha": "22-12-2017",
+                                "cantidad_currency": "EUR",
+                                "cantidad": 100.0,
+                                "state": "borrador"
+                            },
+                            "relationships": {
+                                "activo": {
+                                    "data": {
+                                        "type": "asset",
+                                        "id": "39"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 3
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "amortization",
+                    "attributes": {
+                        "name": "Amortization 1",
+                        "fecha": "22-05-2017",
+                        "cantidad": "100"
+                    },
+                    "relationships": {
+                        "activo": {
+                            "data": {
+                                "type": "asset",
+                                "id": "39"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": {
+                        "type": "amortization",
+                        "id": "287",
+                        "attributes": {
+                            "name": "Amortization 1",
+                            "fecha": "22-05-2017",
+                            "cantidad_currency": "EUR",
+                            "cantidad": 100.0,
+                            "state": "borrador"
+                        },
+                        "relationships": {
+                            "activo": {
+                                "data": {
+                                    "type": "asset",
+                                    "id": "39"
+                                }
+                            }
+                        }
+                    }
+                }
+
+## Retrive [GET /accounting/assets/{asset_id}/amortizations/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this amortization
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "amortization",
+                    "id": "287",
+                    "attributes": {
+                        "name": "Amortization 1",
+                        "fecha": "22-05-2017",
+                        "cantidad_currency": "EUR",
+                        "cantidad": 100.0,
+                        "state": "borrador"
+                    },
+                    "relationships": {
+                        "activo": {
+                            "data": {
+                                "type": "asset",
+                                "id": "39"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /accounting/assets/{asset_id}/amortizations/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this amortization
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "amortization",
+                    "id": "287",
+                    "attributes": {
+                        "cantidad": 110.0
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "amortization",
+                    "id": "287",
+                    "attributes": {
+                        "name": "Amortization 1",
+                        "fecha": "22-05-2017",
+                        "cantidad_currency": "EUR",
+                        "cantidad": 110.0,
+                        "state": "borrador"
+                    },
+                    "relationships": {
+                        "activo": {
+                            "data": {
+                                "type": "asset",
+                                "id": "39"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /accounting/assets/{asset_id}/amortizations/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this amortization
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+## Annotate Amortization [POST /accounting/assets/{asset_id}/amortizations/{id}/annotations]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this amortization
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "amortization",
+                    "id": "287",
+                    "attributes": {
+                        "name": "Amortization 1",
+                        "fecha": "22-05-2017",
+                        "cantidad_currency": "EUR",
+                        "cantidad": 110.0,
+                        "state": "contabilizado"
+                    },
+                    "relationships": {
+                        "activo": {
+                            "data": {
+                                "type": "asset",
+                                "id": "39"
+                            }
+                        }
+                    }
+                }
+            }
+            
+# Asset Types [/accounting/asset_types{?page,page_size,search,ordering}]
+
+**TO-DO** Descripció Asset Types
+
++ Attributes (Asset Type)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+    
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+      
+    + ordering (optional) ... Which field to use when ordering the results.
+        
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/accounting/asset_types?page=1",
+                       "last":"hhttps://api.txerpa.com/accounting/asset_types?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data":[
+                        {
+                            "type": "asset_type",
+                            "id": "7",
+                            "attributes": {
+                                "name": "Equipos para procesos de información",
+                                "porcentaje": "26.00"
+                            },
+                            "relationships": {
+                                "cuenta_activo": {
+                                    "data": {
+                                        "type": "cuenta",
+                                        "id": "193"
+                                    }
+                                },
+                                "cuenta_amortizacion": {
+                                    "data": {
+                                        "type": "cuenta",
+                                        "id": "295"
+                                    }
+                                },
+                                "cuenta_gasto": {
+                                    "data": {
+                                        "type": "cuenta",
+                                        "id": "1078"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":1
+                        }
+                    }
+                }
+
+
+## Retrive [GET /accounting/asset_types/{id}]
+
++ Parameters
+    + id (required, number) ... A unique integer value identifying this asset type
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "asset_type",
+                    "id": "1",
+                    "attributes": {
+                        "name": "Edificios y otras construcciones",
+                        "porcentaje": "3.00"
+                    },
+                    "relationships": {
+                        "cuenta_activo": {
+                            "data": {
+                                "type": "account",
+                                "id": "181"
+                            }
+                        },
+                        "cuenta_amortizacion": {
+                            "data": {
+                                "type": "account",
+                                "id": "283"
+                            }
+                        },
+                        "cuenta_gasto": {
+                            "data": {
+                                "type": "account",
+                                "id": "1078"
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
 # Data Structures
+
+## Money (object)
++ amount (string, required) - **Format: `decimal`**
++ currency (string) - ISO 4217 currency code. **Default: `EUR`**
 
 ## Account (object)
 + name (required)
@@ -1457,8 +2437,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## Entry Record (object)
 + name (required)
-+ debe(required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
-+ haber (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ debe(Money, required) - **Maximum length: 18**, **Decimal places: 6**
++ haber (Money, required) - **Maximum length: 18**, **Decimal places: 6**
 + cuenta (Account, required)
 + partner (Partner)
 + asiento (Entry, required)
@@ -1472,8 +2452,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         
 ## Tax Entry Record (object)
 + name (required)
-+ base (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
-+ cuota (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ base (Money, required) - **Maximum length: 18**, **Decimal places: 6**
++ cuota (Money, required) - **Maximum length: 18**, **Decimal places: 6**
 + impuesto (Tax, required)
 + periodo (Accounting Period, required)
 + state (enum[string]) - **Read only**
@@ -1485,8 +2465,47 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + liquidacion (Tax Filing)
 
 ## Journal (object)
-+ name (string, required)
++ name (required) - **Maximum length: 120**
 
+## Asset (object)
++ name (required) - **Maximum length: 120**
++ fecha (required) - Date of purchase of the asset. **Format: `date`**, **Default: `now`**
++ fecha_venta -  **Format: `date`**
++ valor_inicial (Money, required) - Initial value of the asset, usually the purchase value. **Maximum length: 18**, **Decimal places: 6**
++ valor_residual (Money, required) - **Maximum length: 18**, **Decimal places: 6**
++ porcentaje_amortizacion (required) - Percentage of annual amortization of the good, using hundred percent format. **Format: `decimal`**, **Maximum length: 5**, **Decimal places: 2**
++ t_amortizacion - Years of amortization
++ intervalo (enum[number], required) - Monthly duration of intervals. **Default: 3**
+    + Members
+        + 1
+        + 3
+        + 12
++ libro (Journal, required)
++ tipo (Asset Type, required)
++ estado (enum[string]) - **Read only**
+    + Members
+        + `borrador`
+        + `proceso`
+
++ factura (Invoice)
+
+## Asset Type (object)
++ name
++ cuenta_activo (Account)
++ cuenta_amortizacion (Account)
++ cuenta_gasto (Account)
++ porcentaje - Percentage of annual amortization of the good, using hundred percent format. **Format: `decimal`**, **Maximum length: 5**, **Decimal places: 2**
+
+## Amortization (object)
++ name (required) - **Maximum length: 120**
++ fecha (required) - Date of purchase of the asset. **Format: `date`**
++ activo (Asset, required)
++ cantidad (Money, required) - **Maximum length: 18**, **Decimal places: 6**
++ state (enum[string]) - **Read only**
+    + Members
+        + `borrador`
+        + `contabilizado`
+        
 ## Accounting Period (object)
 + name (string)
 + anyo_fiscal (Fiscal Year)
@@ -1509,3 +2528,5 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Tax
 
 ## Tax Filing (object)
+
+## Invoice (object)
