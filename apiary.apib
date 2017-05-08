@@ -115,8 +115,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Create [POST]
 
 + Attributes
-    + username (string, required)
-    + password (string, required)
+    + username (required)
+    + password (required)
 
 + Request (application/vnd.api+json)
     + Headers
@@ -146,7 +146,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Refresh [POST /auth/refresh]
 
 + Attributes
-    + token (string, required) - Token to be refreshed
+    + token (required) - Token to be refreshed
     
 + Request (application/vnd.api+json)
     + Headers
@@ -188,31 +188,22 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## List [GET]
 
 + Parameters
-    + page (number, optional)
+    + page (number) ... A page number within the paginated result set.
 
-        A page number within the paginated result set.
+    + page_size (number) ... Number of results to return per page.
 
-    + page_size (number, optional)
+    + tipo  ... Filter by tipo field.
 
-        Number of results to return per page.
+    + search ... A search term.
 
-    + tipo (string, optional)
-    
-        Filter by tipo field.
-
-    + search (string, optional)
-
-        A search term.
-
-    + ordering (string, optional)
-
-        Which field to use when ordering the results.
+    + ordering ... Which field to use when ordering the results.
         
 + Request (application/vnd.api+json)
     + Headers
 
             Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -231,8 +222,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "name": "Capital social",
                                 "codigo": "1000000000",
                                 "descripcion": null,
-                                "tipo": "financiacion",
-                                "parent": null,
+                                "tipo": "financiacion"
                             }
                         },
                         {
@@ -242,8 +232,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "name": "Fondo social",
                                 "codigo": "1010000000",
                                 "descripcion": null,
-                                "tipo": "financiacion",
-                                "parent": null,
+                                "tipo": "financiacion"
                             }
                         }
                     ],
@@ -291,8 +280,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "name": "Capital",
                             "codigo": "1020000000",
                             "descripcion": null,
-                            "tipo": "financiacion",
-                            "parent": null,
+                            "tipo": "financiacion"
                         }
                     }
                 }
@@ -301,7 +289,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Retrive [GET /accounting/accounts/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the account
+    + id (number, required) ... A unique integer value identifying this account
 
 + Request (application/vnd.api+json)
     + Headers
@@ -321,7 +309,6 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "name": "Capital",
                             "codigo": "1020000000",
                             "descripcion": null,
-                            "parent": null,
                             "tipo": "financiacion"
                         }
                     }
@@ -331,7 +318,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Update [PATCH /accounting/accounts/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the account
+    + id (number, required) ... A unique integer value identifying this account
 
 + Request (application/vnd.api+json)
     + Headers
@@ -343,12 +330,10 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     
             {
                 "data": {
-                    {
-                        "type": "account",
-                        "id": "9",
-                        "attributes":{
-                            "descripcion": "new description",
-                        }
+                    "type": "account",
+                    "id": "9",
+                    "attributes":{
+                        "descripcion": "new description"
                     }
                 }
             }
@@ -365,7 +350,6 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "name": "Capital",
                             "codigo": "1020000000",
                             "descripcion": "new description",
-                            "parent": null,
                             "tipo": "financiacion"
                         }
                     }
@@ -375,7 +359,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Delete [DELETE /accounting/accounts/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the account
+    + id (number, required) ... A unique integer value identifying this account
 
 + Request (application/vnd.api+json)
     + Headers
@@ -397,21 +381,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## List [GET]
 + Parameters
-    + page (number, optional)
+    + page (number) ... A page number within the paginated result set.
     
-            A page number within the paginated result set.
+    + page_size (number) ... Number of results to return per page.
     
-    + page_size (number, optional)
-    
-            Number of results to return per page.
-    
-    + search (string, optional)
-    
-            A search term.
+    + search ... A search term.
       
-    + ordering (string, optional)
-    
-            Which field to use when ordering the results.
+    + ordering ... Which field to use when ordering the results.
         
 + Request (application/vnd.api+json)
     + Headers
@@ -476,9 +452,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Retrive [GET /accounting/account_categories/{id}]
 
 + Parameters
-    + id (required, number)
-    
-        A unique integer value identifying this account category
+    + id (required, number) ... A unique integer value identifying this account category
 
 + Request (application/vnd.api+json)
     + Headers
@@ -584,7 +558,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "attributes": {
                         "name": "Invoice [2]",
                         "numero": 2,
-                        "fecha": "12-12-2016",
+                        "fecha": "12-12-2016"
                     },
                     "relationships": {
                         "libro": {
@@ -614,7 +588,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "name": "Invoice [2]",
                         "numero": 2,
                         "fecha": "12-12-2016",
-                        "estado": "borrador",
+                        "estado": "borrador"
                     },
                     "relationships": {
                         "libro": {
@@ -636,7 +610,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Retrive [GET /accounting/entries/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the entry
+    + id (number, required) ... A unique integer value identifying this entry
 
 + Request (application/vnd.api+json)
     + Headers
@@ -655,7 +629,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "name": "Invoice [2]",
                         "numero": 2,
                         "fecha": "12-12-2016",
-                        "estado": "borrador",
+                        "estado": "borrador"
                     },
                     "relationships": {
                         "libro": {
@@ -677,7 +651,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Update [PATCH /accounting/entries/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the entry
+    + id (number, required) ... A unique integer value identifying this entry
 
 + Request (application/vnd.api+json)
     + Headers
@@ -692,7 +666,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "type": "entry",
                     "id": "2",
                     "attributes": {
-                        "fecha": "16-12-2017",
+                        "fecha": "16-12-2017"
                     }
                 }
             }
@@ -708,7 +682,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "name": "Invoice [2]",
                         "numero": 2,
                         "fecha": "16-12-2016",
-                        "estado": "borrador",
+                        "estado": "borrador"
                     },
                     "relationships": {
                         "libro": {
@@ -730,7 +704,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Delete [DELETE /accounting/entries/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the entry
+    + id (number, required) ... A unique integer value identifying this entry
 
 + Request (application/vnd.api+json)
     + Headers
@@ -744,7 +718,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Validate Entry [POST /accounting/entries/{id}/validations]
 
 + Parameters
-    + id (required, number) ... Id of the entry
+    + id (number, required) ... A unique integer value identifying this entry
     
 + Request (application/vnd.api+json)
     + Headers
@@ -764,7 +738,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "name": "Invoice [2]",
                         "numero": 2,
                         "fecha": "16-12-2016",
-                        "estado": "asentado",
+                        "estado": "asentado"
                     },
                     "relationships": {
                         "libro": {
@@ -786,7 +760,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Unvalidate Entry [DELETE /accounting/entries/{id}/validations]
 
 + Parameters
-    + id (required, number) ... Id of the entry
+    + id (number, required) ... A unique integer value identifying this entry
 
 + Request (application/vnd.api+json)
     + Headers
@@ -807,7 +781,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "name": "Invoice [2]",
                         "numero": 2,
                         "fecha": "16-12-2016",
-                        "estado": "borrador",
+                        "estado": "borrador"
                     },
                     "relationships": {
                         "libro": {
@@ -831,7 +805,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 **TO-DO** Descripció Entry Records
 
 + Parameters
-    + entry_id (required, number) ... Id of the entry
+    + entry_id (required, number) ... A unique integer value identifying this record entry parent
     
 + Attributes (Entry Record)
 
@@ -991,7 +965,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Retrive [GET /accounting/entries/{entry_id}/records/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the entry record
+    + id (number, required) ... A unique integer value identifying this entry record
 
 + Request (application/vnd.api+json)
     + Headers
@@ -1046,7 +1020,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Update [PATCH /accounting/entries/{entry_id}/records/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the entry record
+    + id (number, required) ... A unique integer value identifying this entry record
 
 + Request (application/vnd.api+json)
     + Headers
@@ -1058,13 +1032,16 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     
             {
                 "data": {
-                    "type": "entry",
+                    "type": "entry_record",
                     "id": "2",
                     "relationships": {
                         "cuenta": {
                             "data": {
                                 "type": "account",
                                 "id": "2"
+                                "attributes": {
+                                    "fecha": "15-12-2016"
+                                }
                             }
                         }
                     }
@@ -1082,7 +1059,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "name": "Cobro W16/00000001",
                         "debe": "25.640000",
                         "haber": "0.000000",
-                        "fecha": "12-12-2016",
+                        "fecha": "15-12-2016",
                         "recc": false,
                         "estado": "borrador"
                     },
@@ -1118,7 +1095,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Delete [DELETE /accounting/entries/{entry_id}/records/{id}]
 
 + Parameters
-    + id (required, number) ... Id of the entry record
+    + id (number, required) ... A unique integer value identifying this entry record
 
 + Request (application/vnd.api+json)
     + Headers
@@ -1134,29 +1111,20 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 
 + Parameters
-    + entry_id (required)
-        
-        A unique integer value identifying parent entry
+    + entry_id (required) ... A unique integer value identifying parent entry
 
 + Attributes (Tax Entry Record)
 
 ## List [GET]
+
 + Parameters
-    + page (number, optional)
+    + page (number) ... A page number within the paginated result set.
 
-        A page number within the paginated result set.
+    + page_size (number) ... Number of results to return per page.
 
-    + page_size (number, optional)
+    + search ... A search term.
 
-        Number of results to return per page.
-
-    + search (string, optional)
-
-        A search term.
-
-    + ordering (string, optional)
-
-        Which field to use when ordering the results.
+    + ordering ... Which field to use when ordering the results.
 
 + Request (application/vnd.api+json)
     + Headers
@@ -1229,11 +1197,11 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
             {
                 "data": {
-                    "type": "tax_entry_record",
+                    "type": "entry_tax_record",
                     "attributes":{
                         "name": "IVA 21% Factura",
                         "base": "29.700000",
-                        "cuota": "6.240000",
+                        "cuota": "6.240000"
                     },
                     "relationships": {
                         "cuenta": {
@@ -1241,11 +1209,23 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "type": "account",
                                 "id": "1"
                             }
-                        }
+                        },
                         "asiento": {
                             "data": {
                                 "type": "entry",
                                 "id": "1"
+                            }
+                        },
+                        "impuesto": {
+                            "data": {
+                                "type": "tax",
+                                "id": "8"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "12"
                             }
                         }
                     }
@@ -1257,13 +1237,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     
                 {
                     "data": {
-                        "type": "tax_entry_record",
+                        "type": "entry_tax_record",
                         "id": "1",
                         "attributes":{
                             "name": "IVA 21% Factura",
                             "base": "29.700000",
                             "cuota": "6.240000",
-                            "state": "valido"
+                            "state": "borrador"
                         },
                         "relationships": {
                             "impuesto": {
@@ -1273,21 +1253,170 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 }
                             },
                             "tercero": {
+                                "data": null
+                            },
+                            "periodo": {
                                 "data": {
-                                    "type": "partner",
+                                    "type": "accounting_period",
+                                    "id": "12"
+                                }
+                            },
+                            "asiento": {
+                                "data": {
+                                    "type": "entry",
                                     "id": "1"
                                 }
                             },
-                            "periodo": {
-                                "data": null
-                            },
                             "liquidacion": {
                                 "data": null
-                            },
+                            }
                         }
                     }
                 }
                 
+                
+## Retrive [GET /accounting/entries/{entry_id}/tax_records/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this tax record entry
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry_tax_record",
+                    "id": "1",
+                    "attributes":{
+                        "name": "IVA 21% Factura",
+                        "base": "29.700000",
+                        "cuota": "6.240000",
+                        "state": "borrador"
+                    },
+                    "relationships": {
+                        "impuesto": {
+                            "data": {
+                                "type": "tax",
+                                "id": "8"
+                            }
+                        },
+                        "tercero": {
+                            "data": null
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "12"
+                            }
+                        },
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "1"
+                            }
+                        },
+                        "liquidacion": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+
+## Update [PATCH /accounting/entries/{entry_id}/tax_records/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this tax record entry
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry_tax_record",
+                    "id": "1",
+                    "relationships": {
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "2"
+                                "attributes": {
+                                    "name": "IVA 21% Factura 1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "entry_tax_record",
+                    "id": "1",
+                    "attributes":{
+                        "name": "IVA 21% Factura 1",
+                        "base": "29.700000",
+                        "cuota": "6.240000",
+                        "state": "borrador"
+                    },
+                    "relationships": {
+                        "impuesto": {
+                            "data": {
+                                "type": "tax",
+                                "id": "8"
+                            }
+                        },
+                        "tercero": {
+                            "data": null
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "12"
+                            }
+                        },
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "1"
+                            }
+                        },
+                        "liquidacion": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /accounting/entries/{entry_id}/records/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this tax record entry
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
 # Data Structures
 
 ## Account (object)
@@ -1308,7 +1437,6 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         + `acobrar`
         + `impuesto`
 + descripcion (string)
-+ parent (Account) - Account parent.
 
 ## Account Category (object)
 + nombre (string)
@@ -1317,7 +1445,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## Entry (object)
 + name (string, required)
-+ numero (number, optional) - Positive
++ numero (number, optional) - **Format: `positive`**
 + fecha (string, required) - **Format: `date`**, **Default: `now`**
 + libro (Journal, required)
 + periodo (Accounting Period, required)
@@ -1328,27 +1456,27 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         + `auditado`
 
 ## Entry Record (object)
-+ name: A entry record (required)
-+ debe: 0.000000 (required) - Decimal value, max digits 18, decimal places 6
-+ haber: 53.000000 (required) - Decimal value, max digits 18, decimal places 6
++ name (required)
++ debe(required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ haber (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
 + cuenta (Account, required)
 + partner (Partner)
 + asiento (Entry, required)
-+ fecha: `12-12-2016` (required) - Date field
-+ recc: false (boolean, required) - Default False
++ fecha (required) -  **Format: `date`**
++ recc (boolean, required) - **Default: `false`**
 + conciliacion (Conciliation)
-+ estado: borrador (enum[string]) - Read only property
++ estado (enum[string]) - **Read only**
     + Members
         + `borrador`
         + `asentado`
         
 ## Tax Entry Record (object)
-+ name: A tax entry record (required)
-+ base: 0.000000 (required) - Decimal value, max digits 18, decimal places 6
-+ cuota: 53.000000 (required) - Decimal value, max digits 18, decimal places 6
++ name (required)
++ base (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ cuota (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
 + impuesto (Tax, required)
 + periodo (Accounting Period, required)
-+ state: borrador (enum[string]) - Read only property
++ state (enum[string]) - **Read only**
     + Members
         + `borrador`
         + `asentado`
