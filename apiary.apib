@@ -4,6 +4,10 @@ HOST: https://api.txerpa.com/v1
 # Txerpa API v1
 This describes the resources that make up the official Txerpa API v1. If you have any problems or requests please contact support.
 
+
+NOTE: This document is a **work in progress**.
+
+
 ## Schema
 All API access is over HTTPS, and accessed from the `https://api.txerpa.com`. All data is sent and received as JSON following JSON API specification where possible. We strongly encourage you to read the [complet specification](http://jsonapi.org/format/) 
 
@@ -2392,7 +2396,280 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                 }
             }
             
+
+# Accounting Periods [/accounting/periods{?page,page_size,fecha_inicio__gte,fecha_inicio__lte,fecha_fin__gte,fecha_fin__lte,search,ordering}]
+**TO-DO** Descripció Accounting Periods
+
++ Attributes (Accounting Period)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + fecha_inicio__gte (optional) ... Filter by *dia* *inicio* field using greater or equal comparison.
+    
+    + fecha_inicio__lte (optional) ... Filter by *dia* *inicio* field using less or equal comparison.
+    
+    + fecha_fin__gte (optional) ... Filter by *dia* *fin* field using greater or equal comparison.
+    
+    + fecha_fin__lte (optional) ... Filter by *dia* *fin* field using less or equal comparison.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/accounting/periods?page=1",
+                       "last":"hhttps://api.txerpa.com/accounting/periods?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data":[
+                        {
+                            "type": "accounting_period",
+                            "id": "28",
+                            "attributes": {
+                                "name": "C2017",
+                                "dia_inicio": "31-12-2017",
+                                "dia_fin": "31-12-2017",
+                                "limite_domiciliacion": null,
+                                "limite_presentacion": null,
+                                "especial": true,
+                                "duracion_periodos": 3,
+                                "cerrado": false
+                            },
+                            "relationships": {
+                                "anyo_fiscal": {
+                                    "data": {
+                                        "type": "fiscal_year",
+                                        "id": "2"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":1
+                        }
+                    }
+                }
+
+
+## Retrive [GET /accounting/periods/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this period
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "accounting_period",
+                    "id": "1",
+                    "attributes": {
+                        "name": "1M2016",
+                        "dia_inicio": "01-01-2016",
+                        "dia_fin": "31-01-2016",
+                        "limite_domiciliacion": "15-02-2016",
+                        "limite_presentacion": "20-02-2016",
+                        "especial": false,
+                        "duracion_periodos": 1,
+                        "cerrado": false
+                    },
+                    "relationships": {
+                        "anyo_fiscal": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
             
+
+# Fiscal Years [/accounting/fiscal_years{?page,page_size,search,ordering}]
+**TO-DO** Descripció Fiscal Years
+
++ Attributes (Fiscal Year)
+
+## List [GET]
++ Parameters
+    + page (number, optional) - A page number within the paginated result set.
+        + Default: `1`
+    + page_size (number, optional) - Number of results to return per page.
+        + Default: `10`
+    + search (optional) - A search term.
+    + ordering (optional) - Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/accounting/fiscal_years?page=1",
+                       "last":"hhttps://api.txerpa.com/accounting/fiscal_years?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data":[
+                        {
+                            "type": "fiscal_year",
+                            "id": "1",
+                            "attributes": {
+                                "name": "2016",
+                                "anyo": 2016
+                            }
+                        },
+                        {
+                            "type": "fiscal_year",
+                            "id": "2",
+                            "attributes": {
+                                "name": "2017",
+                                "anyo": 2017
+                            }
+                        }
+                    ],
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":2
+                        }
+                    }
+                }
+
+## Retrive [GET /accounting/fiscal_years/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this fiscal year
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "fiscal_year",
+                    "id": "1",
+                    "attributes": {
+                        "name": "2016",
+                        "anyo": 2016
+                    }
+                }
+            }
+            
+# Reports [/accounting/reports]
+**TO-DO** Descripció Reports
+
+## Balance [GET /accounting/reports/balance{?dia_inicio,dia_fin,abreviada}]
+
++ Parameters
+    + dia_inicio (optional) - Report start date.
+        + Default: `today`
+    + dia_fin (optional) - Report end date.
+        + Default: `first day of year`
+    + abreviada (boolean, optional) - Indicates if get summarized version of report.
+        + Default: `false`
+    
+    
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.ms-excel)
+
+
+
+## Profit and Loss [GET /accounting/reports/profitloss{?dia_inicio,dia_fin,abreviada}]
+
++ Parameters
+    + dia_inicio (optional) - Report start date.
+        + Default: `today`
+    + dia_fin (optional) - Report end date.
+        + Default: `first day of year`
+    + abreviada (boolean, optional) - Indicates if get summarized version of report.
+        + Default: `false`
+        
++ Request
+    
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.ms-excel)
+
+
+
+## Sums and Balances [GET /accounting/reports/sumbalances{?dia_inicio,dia_fin,formato,cuentas,todos,digitos}]
+
++ Parameters
+    + dia_inicio (optional) - Report start date.
+        + Default: `today`
+    + dia_fin (optional) - Report end date.
+        + Default: `first day of year`
+    + formato (enum[string], optional)
+        + Default: `xlsx`
+        + Members
+            + `xlsx`
+            + `csv`
+    + cuentas (optional) - Accounts `id` to be included.
+    + todos (boolean, optional) - Get empty sections too.
+        + Default: `false`
+    + digitos (number, optional) - Group accounts by n first digits. **Max**: `4`. **Min**: `1`
+        
++ Request XLSX Report
+    + Headers
+
+            Accept: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+
++ Request CSV Report
+
+    + Headers
+
+            Accept: text/csv
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (text/csv)
+
+
 # Data Structures
 
 ## Money (object)
@@ -2518,8 +2795,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + cerrado (boolean)
 
 ## Fiscal Year (object)
-+ name (string)
-+ anyo (string)
++ name
++ anyo
 
 ## Conciliation (object)
 
