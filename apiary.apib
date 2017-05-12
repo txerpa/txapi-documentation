@@ -2670,11 +2670,1496 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Response 200 (text/csv)
 
 
+
+# Group Billing
+**TO-DO** Descripció Billing API
+
+# Invoices [/billing/invoices{?page,page_size,total__gte,total__lte,libro,recurrencia,autogenerada,estado,serie,tipo,search,ordering}]
+**TO-DO** Descripció Invoices
+
++ Attributes (Invoice)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+
+    + total__gte (optional) ... Filter by *total* field using greater or equal comparison.
+    
+    + total__lte (optional) ... Filter by *total* field using less or equal comparison.
+
+    + libro (optional) ... Filter by *libro* field using equal comparison.
+    
+    + recurrencia (boolean, optional) ... Filter by *recurrencia* field using equal comparison.
+
+    + autogenerada (boolean, optional) ... Filter by *autogenerada* field using equal comparison.
+
+    + estado (optional) ... Filter by *estado* field using equal comparison.
+
+    + serie (optional) ... Filter by *serie* field using equal comparison.
+
+    + tipo (optional) ... Filter by *tipo* field using equal comparison.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links":{
+                       "first":"https://api.txerpa.com/billing/invoices?page=1",
+                       "last":"hhttps://api.txerpa.com/billing/invoices?page=1",
+                       "next":null,
+                       "prev":null
+                    },
+                    "data": [
+                        {
+                            "type": "invoice",
+                            "id": "182694",
+                            "attributes": {
+                                "currency": "EUR",
+                                "name": "Factura",
+                                "tipo": "venta",
+                                "fecha": "01-12-2016",
+                                "numero_str": "S17/000001",
+                                "numero": 1,
+                                "numero_proveedor": null,
+                                "direccion_receptor": "direccion",
+                                "direccion_emisor": "direcion emisor",
+                                "descripcion": "",
+                                "base": {
+                                    currency: "EUR",
+                                    amount: "22.14"
+                                },
+                                "base_original": {
+                                    currency: "EUR",
+                                    amount: "22.14"
+                                },
+                                "cuota": {
+                                    currency: "EUR",
+                                    amount: "0.0"
+                                }
+                                "cuota_original": {
+                                    currency: "EUR",
+                                    amount: "0.0"
+                                },
+                                "notas": "**** **** ****",
+                                "estado": "pendiente"
+                        },
+                        "relationships": {
+                            "asiento": {
+                                "data": {
+                                    "type": "entry",
+                                    "id": "60184"
+                                }
+                            },
+                            "serie": {
+                                "data": {
+                                    "type": "billing_serie",
+                                    "id": "8"
+                                }
+                            },
+                            "tercero": {
+                                "data": {
+                                    "type": "partner",
+                                    "id": "296514"
+                                }
+                            },
+                            "ejercicio": {
+                                "data": {
+                                    "type": "fiscal_year",
+                                    "id": "1"
+                                }
+                            },
+                            "periodo": {
+                                "data": {
+                                    "type": "accounting_period",
+                                    "id": "12"
+                                }
+                            },
+                            "posicion_fiscal": {
+                                "data": null
+                            },
+                            "original": {
+                                "data": null
+                            },
+                            "metodo_pago": {
+                                "data": null
+                            }
+                        }
+                    },
+                    "meta":{
+                        "pagination":{
+                            "page":1,
+                            "pages":1,
+                            "count":1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+    + Body
+
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "1",
+                    "attributes": {
+                        "name": "Factura 1",
+                        "tipo": "venta"
+                    },
+                    "relationships": {
+                        "serie": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "12"
+                            }
+                        },
+                        "tercero": {
+                            "data": {
+                                "type": "partner",
+                                "id": "280941"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "224106",
+                    "attributes": {
+                        "currency": "EUR",
+                        "name": "Factura 1",
+                        "tipo": "venta",
+                        "fecha": "12-05-2017",
+                        "numero_str": null,
+                        "numero": null,
+                        "numero_proveedor": null,
+                        "direccion_receptor": "",
+                        "direccion_emisor": "",
+                        "descripcion": "",
+                        "base_currency": "EUR",
+                        "base": 0.0,
+                        "base_original_currency": "EUR",
+                        "base_original": 0.0,
+                        "cuota_currency": "EUR",
+                        "cuota": 0.0,
+                        "cuota_original_currency": "EUR",
+                        "cuota_original": 0.0,
+                        "notas": "",
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "asiento": {
+                            "data": null
+                        },
+                        "serie": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "12"
+                            }
+                        },
+                        "tercero": {
+                            "data": {
+                                "type": "partner",
+                                "id": "280941"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": null
+                        },
+                        "periodo": {
+                            "data": null
+                        },
+                        "posicion_fiscal": {
+                            "data": {
+                                "type": "tax_group",
+                                "id": "1"
+                            }
+                        },
+                        "original": {
+                            "data": null
+                        },
+                        "metodo_pago": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+## Retrive [GET /billing/invoices/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this invoice
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "224078",
+                    "attributes": {
+                        "currency": "EUR",
+                        "name": "Factura",
+                        "tipo": "venta",
+                        "fecha": "10-04-2017",
+                        "numero_str": null,
+                        "numero": null,
+                        "numero_proveedor": null,
+                        "direccion_receptor": null,
+                        "direccion_emisor": null,
+                        "descripcion": "",
+                        "base_currency": "EUR",
+                        "base": 0.0,
+                        "base_original_currency": "EUR",
+                        "base_original": 0.0,
+                        "cuota_currency": "EUR",
+                        "cuota": 0.0,
+                        "cuota_original_currency": "EUR",
+                        "cuota_original": 0.0,
+                        "notas": "",
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "asiento": {
+                            "data": null
+                        },
+                        "serie": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "12"
+                            }
+                        },
+                        "tercero": {
+                            "data": {
+                                "type": "partner",
+                                "id": "280941"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "18"
+                            }
+                        },
+                        "posicion_fiscal": {
+                            "data": {
+                                "type": "tax_group",
+                                "id": "1"
+                            }
+                        },
+                        "original": {
+                            "data": null
+                        },
+                        "metodo_pago": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /billing/invoices/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this invoice
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "224078",
+                    "attributes": {
+                        "descripcion": "des"
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "224078",
+                    "attributes": {
+                        "currency": "EUR",
+                        "name": "Factura",
+                        "tipo": "venta",
+                        "fecha": "10-04-2017",
+                        "numero_str": null,
+                        "numero": null,
+                        "numero_proveedor": null,
+                        "direccion_receptor": null,
+                        "direccion_emisor": null,
+                        "descripcion": "des",
+                        "base_currency": "EUR",
+                        "base": 0.0,
+                        "base_original_currency": "EUR",
+                        "base_original": 0.0,
+                        "cuota_currency": "EUR",
+                        "cuota": 0.0,
+                        "cuota_original_currency": "EUR",
+                        "cuota_original": 0.0,
+                        "notas": "",
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "asiento": {
+                            "data": null
+                        },
+                        "serie": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "12"
+                            }
+                        },
+                        "tercero": {
+                            "data": {
+                                "type": "partner",
+                                "id": "280941"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "18"
+                            }
+                        },
+                        "posicion_fiscal": {
+                            "data": {
+                                "type": "tax_group",
+                                "id": "1"
+                            }
+                        },
+                        "original": {
+                            "data": null
+                        },
+                        "metodo_pago": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /billing/invoices/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this invoice
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
+## Validate Invoice [POST /billing/invoices/{id}/validations]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this invoice
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "224108",
+                    "attributes": {
+                        "currency": "EUR",
+                        "name": "Factura 1",
+                        "tipo": "venta",
+                        "fecha": "12-05-2017",
+                        "numero_str": "W17/095157",
+                        "numero": 95157,
+                        "numero_proveedor": null,
+                        "direccion_receptor": "",
+                        "direccion_emisor": "",
+                        "descripcion": "",
+                        "base_currency": "EUR",
+                        "base": 50.0,
+                        "base_original_currency": "EUR",
+                        "base_original": 50.0,
+                        "cuota_currency": "EUR",
+                        "cuota": 10.5,
+                        "cuota_original_currency": "EUR",
+                        "cuota_original": 10.5,
+                        "notas": "",
+                        "estado": "pendiente"
+                    },
+                    "relationships": {
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "172783"
+                            }
+                        },
+                        "serie": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "12"
+                            }
+                        },
+                        "tercero": {
+                            "data": {
+                                "type": "partner",
+                                "id": "280941"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "19"
+                            }
+                        },
+                        "posicion_fiscal": {
+                            "data": {
+                                "type": "tax_group",
+                                "id": "1"
+                            }
+                        },
+                        "original": {
+                            "data": null
+                        },
+                        "metodo_pago": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+## Unvalidate Invoice [DELETE /billing/invoices/{id}/validations]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this invoice
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "224108",
+                    "attributes": {
+                        "currency": "EUR",
+                        "name": "Factura 1",
+                        "tipo": "venta",
+                        "fecha": "12-05-2017",
+                        "numero_str": "W17/095157",
+                        "numero": 95157,
+                        "numero_proveedor": null,
+                        "direccion_receptor": "",
+                        "direccion_emisor": "",
+                        "descripcion": "",
+                        "base_currency": "EUR",
+                        "base": 50.0,
+                        "base_original_currency": "EUR",
+                        "base_original": 50.0,
+                        "cuota_currency": "EUR",
+                        "cuota": 10.5,
+                        "cuota_original_currency": "EUR",
+                        "cuota_original": 10.5,
+                        "notas": "",
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "asiento": {
+                            "data": null
+                        },
+                        "serie": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "12"
+                            }
+                        },
+                        "tercero": {
+                            "data": {
+                                "type": "partner",
+                                "id": "280941"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "19"
+                            }
+                        },
+                        "posicion_fiscal": {
+                            "data": {
+                                "type": "tax_group",
+                                "id": "1"
+                            }
+                        },
+                        "original": {
+                            "data": null
+                        },
+                        "metodo_pago": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+            
+## Rectify Invoice [POST /billing/invoices/{id}/rectifications{?date}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this invoice
+    + date (optional) ... Invoice rectification date
+        + default `today`
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "224109",
+                    "attributes": {
+                        "currency": "EUR",
+                        "name": "Factura 1 Rectificada",
+                        "tipo": "venta",
+                        "fecha": "12-05-2017",
+                        "numero_str": "",
+                        "numero": 95158,
+                        "numero_proveedor": null,
+                        "direccion_receptor": "",
+                        "direccion_emisor": "",
+                        "descripcion": "",
+                        "base_currency": "EUR",
+                        "base": 50.0,
+                        "base_original_currency": "EUR",
+                        "base_original": 50.0,
+                        "cuota_currency": "EUR",
+                        "cuota": 10.5,
+                        "cuota_original_currency": "EUR",
+                        "cuota_original": 10.5,
+                        "notas": "",
+                        "estado": "borrador"
+                    },
+                    "relationships": {
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "172784"
+                            }
+                        },
+                        "serie": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "12"
+                            }
+                        },
+                        "tercero": {
+                            "data": {
+                                "type": "partner",
+                                "id": "280941"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "19"
+                            }
+                        },
+                        "posicion_fiscal": {
+                            "data": {
+                                "type": "tax_group",
+                                "id": "1"
+                            }
+                        },
+                        "original": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "224109"
+                            }
+                        },
+                        "metodo_pago": {
+                            "data": null
+                        }
+                    }
+                }
+            }
+
+# Invoice Lines [/billing/invoices/{invoice_id}/lines{?page,page_size,search,ordering}]
+**TO-DO** Descripció Invoice Lines
+
++ Parameters
+    + invoice_id (required, number) ... A unique integer value identifying this invoice line parent
+    
++ Attributes (Invoice Line)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links": {
+                       "first": "https://api.txerpa.com/billing/invoices/1/lines?page=1",
+                       "last": "hhttps://api.txerpa.com/billing/invoices/1/lines?page=1",
+                       "next": null,
+                       "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "invoice_line",
+                            "id": "224189",
+                            "attributes": {
+                                "name": "default",
+                                "descripcion": null,
+                                "unidades": "1.000000",
+                                "precio_unitario": "50.000000",
+                                "porcentaje_descuento_linea": null
+                            },
+                            "relationships": {
+                                "analytical_lines": {
+                                    "data": []
+                                },
+                                "factura": {
+                                    "data": {
+                                        "type": "invoice",
+                                        "id": "224108"
+                                    }
+                                },
+                                "cuenta": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "1191"
+                                    }
+                                },
+                                "tipo_activo": {
+                                    "data": null
+                                },
+                                "producto": {
+                                    "data": null
+                                },
+                                "impuestos": {
+                                    "meta": {
+                                        "count": 1
+                                    },
+                                    "data": [
+                                        {
+                                            "type": "tax",
+                                            "id": "8"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "invoice_line",
+                    "attributes": {
+                        "name": "default",
+                        "unidades": "1.000000",
+                        "precio_unitario": "50.000000"
+                    },
+                    "relationships": {
+                        "factura": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "224108"
+                            }
+                        },
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "1191"
+                            }
+                        },
+                        "impuestos": {
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": {
+                        "type": "invoice_line",
+                        "id": "224189",
+                        "attributes": {
+                            "name": "default",
+                            "descripcion": null,
+                            "unidades": "1.000000",
+                            "precio_unitario": "50.000000",
+                            "porcentaje_descuento_linea": null
+                        },
+                        "relationships": {
+                            "analytical_lines": {
+                                "data": []
+                            },
+                            "factura": {
+                                "data": {
+                                    "type": "invoice",
+                                    "id": "224108"
+                                }
+                            },
+                            "cuenta": {
+                                "data": {
+                                    "type": "account",
+                                    "id": "1191"
+                                }
+                            },
+                            "tipo_activo": {
+                                "data": null
+                            },
+                            "producto": {
+                                "data": null
+                            },
+                            "impuestos": {
+                                "meta": {
+                                    "count": 1
+                                },
+                                "data": [
+                                    {
+                                        "type": "tax",
+                                        "id": "8"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+## Retrive [GET /billing/invoices/{invoice_id}/lines/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this invoice line
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice_line",
+                    "id": "224189",
+                    "attributes": {
+                        "name": "default",
+                        "descripcion": null,
+                        "unidades": "1.000000",
+                        "precio_unitario": "50.000000",
+                        "porcentaje_descuento_linea": null
+                    },
+                    "relationships": {
+                        "analytical_lines": {
+                            "data": []
+                        },
+                        "factura": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "224108"
+                            }
+                        },
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "1191"
+                            }
+                        },
+                        "tipo_activo": {
+                            "data": null
+                        },
+                        "producto": {
+                            "data": null
+                        },
+                        "impuestos": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /billing/invoices/{invoice_id}/lines/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this invoice line
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice_line",
+                    "id": "224189",
+                    "attributes": {
+                        "descripcion": "Invoice line description"
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice_line",
+                    "id": "224189",
+                    "attributes": {
+                        "name": "default",
+                        "descripcion": "Invoice line description",
+                        "unidades": "1.000000",
+                        "precio_unitario": "50.000000",
+                        "porcentaje_descuento_linea": null
+                    },
+                    "relationships": {
+                        "analytical_lines": {
+                            "data": []
+                        },
+                        "factura": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "224108"
+                            }
+                        },
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "1191"
+                            }
+                        },
+                        "tipo_activo": {
+                            "data": null
+                        },
+                        "producto": {
+                            "data": null
+                        },
+                        "impuestos": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /billing/invoices/{invoice_id}/lines/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this invoice line
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+# Invoice Transactions [/billing/invoices/{invoice_id}/transactions{?page,page_size,search,ordering}]
+**TO-DO** Descripció Transactions
+
++ Parameters
+    + invoice_id (required, number) ... A unique integer value identifying this invoice transaction parent
+    
++ Attributes (Transaction)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "links": {
+                        "first": "http://habitissimo53dc928e2d56.txerpa.dev:2000/billing/invoices/223472/transactions?page=1",
+                        "last": "http://habitissimo53dc928e2d56.txerpa.dev:2000/billing/invoices/223472/transactions?page=1",
+                        "next": null,
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "transaction",
+                            "id": "70233",
+                            "attributes": {
+                                "name": "Cobro W17/029029",
+                                "tipo": "in",
+                                "fecha": "31-03-2017",
+                                "cantidad_original_currency": "EUR",
+                                "cantidad_original": 40.0,
+                                "cantidad_currency": "EUR",
+                                "cantidad": 40.0,
+                                "concepto": "Cobro W17/029029",
+                                "estado": "validado"
+                            },
+                            "relationships": {
+                                "metodo": {
+                                    "data": {
+                                        "type": "transaction_method",
+                                        "id": "23"
+                                    }
+                                },
+                                "tercero": {
+                                    "data": {
+                                        "type": "partner",
+                                        "id": "109434"
+                                    }
+                                },
+                                "libro": {
+                                    "data": {
+                                        "type": "journal",
+                                        "id": "1"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+                
+# Invoice Emails [/billing/invoices/{invoice_id}/emails{?page,page_size,search,ordering}]
+**TO-DO** Descripció Invoice Emails
+
++ Parameters
+    + invoice_id (required, number) ... A unique integer value identifying this invoice email parent
+    
++ Attributes (Invoice Email)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "links": {
+                        "first": "http://habitissimo53dc928e2d56.txerpa.dev:2000/billing/invoices/223472/emails?page=1",
+                        "last": "http://habitissimo53dc928e2d56.txerpa.dev:2000/billing/invoices/223472/emails?page=1",
+                        "next": null,
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "invoice_email",
+                            "id": "13",
+                            "attributes": {
+                                "email": "mateu.canaves@txerpa.com",
+                                "subject": "asunto",
+                                "message": "mensaje",
+                                "status": "pending",
+                                "created": "12-05-2017 13:51:18"
+                            },
+                            "relationships": {
+                                "factura": {
+                                    "data": {
+                                        "type": "invoice",
+                                        "id": "223472"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "invoice_email",
+                    "attributes": {
+                        "email": "mateu.canaves@txerpa.com",
+                        "subject": "asunto",
+                        "message": "mensaje"
+                    },
+                    "relationships": {
+                        "factura": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "223472"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": {
+                        "type": "invoice_email",
+                        "id": "13",
+                        "attributes": {
+                            "email": "mateu.canaves@txerpa.com",
+                            "subject": "asunto",
+                            "message": "mensaje",
+                            "status": "pending",
+                            "created": "12-05-2017 13:51:18"
+                        },
+                        "relationships": {
+                            "factura": {
+                                "data": {
+                                    "type": "invoice",
+                                    "id": "223472"
+                                }
+                            }
+                        }
+                    }
+                }
+
+## Retrive [GET /billing/invoices/{invoice_id}/emails/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this invoice email
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice_email",
+                    "id": "13",
+                    "attributes": {
+                        "email": "mateu.canaves@txerpa.com",
+                        "subject": "asunto",
+                        "message": "mensaje",
+                        "status": "pending",
+                        "created": "12-05-2017 13:51:18"
+                    },
+                    "relationships": {
+                        "factura": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "223472"
+                            }
+                        }
+                    }
+                }
+            }
+ 
+ 
+# Billing Series [/accounting/billing_series{?page,page_size,search,ordering}]
+**TO-DO** Descripció Billing Series
+
++ Attributes (Billing Serie)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "links": {
+                        "first": "http://habitissimo53dc928e2d56.txerpa.dev:2000/billing/billing_series?page=1",
+                        "last": "http://habitissimo53dc928e2d56.txerpa.dev:2000/billing/billing_series?page=1",
+                        "next": null,
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "billing_serie",
+                            "id": "1",
+                            "attributes": {
+                                "name": "ES",
+                                "tipo": "venta",
+                                "prefijo": "ESyy/",
+                                "sufijo": null,
+                                "relleno": 4
+                            },
+                            "relationships": {
+                                "libro": {
+                                    "data": {
+                                        "type": "journal",
+                                        "id": "1"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "billing_serie",
+                    "attributes": {
+                        "name": "ES",
+                        "tipo": "venta",
+                        "prefijo": "ESyy/"
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "billing_serie",
+                    "id": "1",
+                    "attributes": {
+                        "name": "ES",
+                        "tipo": "venta",
+                        "prefijo": "ESyy/",
+                        "sufijo": null,
+                        "relleno": 4
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Retrive [GET /accounting/billing_series/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this billing serie
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "billing_serie",
+                    "id": "1",
+                    "attributes": {
+                        "name": "ES",
+                        "tipo": "venta",
+                        "prefijo": "ESyy/",
+                        "sufijo": null,
+                        "relleno": 4
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /accounting/billing_series/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this billing serie
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "billing_serie",
+                    "id": "1",
+                    "attributes": {
+                        "relleno": 6
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "billing_serie",
+                    "id": "1",
+                    "attributes": {
+                        "name": "ES",
+                        "tipo": "venta",
+                        "prefijo": "ESyy/",
+                        "sufijo": null,
+                        "relleno": 6
+                    },
+                    "relationships": {
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /accounting/billing_series/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this billing serie
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
 # Data Structures
 
 ## Money (object)
-+ amount (string, required) - **Format: `decimal`**
-+ currency (string) - ISO 4217 currency code. **Default: `EUR`**
++ amount (required) - **Format: `decimal`**
++ currency - ISO 4217 currency code. **Default: `EUR`**
 
 ## Account (object)
 + name (required)
@@ -2693,7 +4178,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         + `apagar`
         + `acobrar`
         + `impuesto`
-+ descripcion (string)
+    + descripcion (string)
 
 ## Account Category (object)
 + nombre (string)
@@ -2798,6 +4283,85 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + name
 + anyo
 
+## Invoice
++ name (required) - **Maximum length: 120**
++ tipo (enum[string])
+    + Members
+        + `venta`
+        + `compra`
+        + `rectifica_venta`
+        + `rectifica_compra`
+    + Default: `venta`
++ fecha
+    + Default: `today`
++ descripcion - **Maximum length: 80**
+    + Default: ""
++ numero_str - **Maximum length: 80**
++ numero (number)
++ numero_proveedor - **Maximum length: 80**
++ currency - ISO 4217 currency code. **Default: `EUR`**
++ direccion_receptor
++ direccion_emisor
++ base (Money) - **Read only**
++ base_original (Money) - **Read only**
++ cuota (Money) - **Read only**
++ cuota_original (Money) - **Read only**
++ notas
+    + Default: ""
++ estado (enum[string]) - **Read only**
+    + Members
+        + `borrador`
+        + `asentado`
++ serie (Billing Serie, required)
++ tercero (Partner, required)
++ ejercicio (Fiscal Year)
++ periodo (Accounting Period)
++ posicion_fiscal (Tax Group)
++ original (Invoice)
++ asiento (Entry)
++ metodo_pago (Transaction Type)
+
+## Invoice Line
++ name (required) - **Maximum length: 120**
++ descripcion
++ unidades (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ precio_unitario (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ porcentaje_descuento_linea - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ impuestos (array[Tax], required)
++ factura (Invoice, required)
++ cuenta (Invoice, required)
++ tipo_activo (Asset Type)
++ producto (Product)
+
+## Invoice Email
++ email (required) - **Maximum length: 128**
++ subject (required) - **Maximum length: 128**
++ message (required)
++ created - **Read only**, **Fromat: `datetime`**
+    + Default: `now`
++ status - **Read only**
++ factura (Invoice, required)
+
+## Billing Serie
++ name (required) - **Maximum length: 120**
++ tipo (enum[string], required)
+    + Members
+        + `venta`
+        + `compra`
+        + `r_venta`
+        + `r_compra`
++ prefijo - **Maximum length: 8**
++ sufijo - **Maximum length: 8**
++ relleno (number)
+    + Default: 4
++ libro (Journal, required)
+
+## Transaction
+
+## Transaction Type
+
+## Tax Group
+
 ## Conciliation (object)
 
 ## Partner (object)
@@ -2806,4 +4370,4 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## Tax Filing (object)
 
-## Invoice (object)
+## Product (object)
