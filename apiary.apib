@@ -4155,6 +4155,305 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Response 204
 
 
+# Group Partners
+**TO-DO** Descripció Partners API
+
+# Partners [/partners{?page,page_size,integration_key,integration_value,name,nif,email,telefono,search,ordering}]
+**TO-DO** Descripció Partners
+
++ Attributes (Partner)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+
+    + integration_key (optional) ... Filter by *integration* *key* related field using equal comparison.
+
+    + integration_value (optional) ... Filter by *integration* *value* related field using equal comparison.
+
+    + name (optional) ... Filter by *name* field using equal comparison.
+
+    + nif (optional) ... Filter by *nif* field using equal comparison.
+
+    + email (optional) ... Filter by *email* field using equal comparison.
+
+    + telefono (optional) ... Filter by *telefono* field using equal comparison.
+
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "links": {
+                        "first": "http://habitissimo53dc928e2d56.txerpa.dev:2000/partners?page=1",
+                        "last": "http://habitissimo53dc928e2d56.txerpa.dev:2000/partners?page=1",
+                        "next": null,
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "partner",
+                            "id": "1",
+                            "attributes": {
+                                "name": "Tesoreria SS",
+                                "nif": null,
+                                "fiscal_name": "Tesoreria Seguridad Social",
+                                "direccion": "",
+                                "pais_alpha2": "ES",
+                                "provincia": null,
+                                "poblacion": null,
+                                "codigo_postal": null,
+                                "telefono": "971288612",
+                                "movil": null,
+                                "email": null,
+                                "web": "http://www.seg-social.es/",
+                                "cliente": false,
+                                "proveedor": true,
+                                "persona_juridica": true,
+                                "tipo_juridica": null,
+                                "notas": "",
+                                "id_besepa": "",
+                            },
+                            "relationships": {
+                                "posicion": {
+                                    "data": null
+                                },
+                                "logo": {
+                                    "data": null
+                                }
+                            }
+                        }
+                    ]
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "partner",
+                    "attributes": {
+                        "name": "Ender",
+                        "fiscal_name": "Wiggin"
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "partner",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Ender",
+                        "nif": null,
+                        "fiscal_name": "Wiggin",
+                        "direccion": "",
+                        "pais_alpha2": "ES",
+                        "provincia": null,
+                        "poblacion": null,
+                        "codigo_postal": null,
+                        "telefono": null,
+                        "movil": null,
+                        "email": null,
+                        "web": null,
+                        "cliente": true,
+                        "proveedor": false,
+                        "persona_juridica": false,
+                        "tipo_juridica": null,
+                        "notas": "",
+                        "id_besepa": ""
+                    },
+                    "relationships": {
+                        "posicion": {
+                            "data": null
+                        },
+                        "logo": {
+                            "data": null
+                        },
+                        "cuentas_contables": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "account",
+                                    "id": "408634"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+
+## Retrive [GET /partners/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this partner
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "partner",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Ender",
+                        "nif": null,
+                        "fiscal_name": "Wiggin",
+                        "direccion": "",
+                        "pais_alpha2": "ES",
+                        "provincia": null,
+                        "poblacion": null,
+                        "codigo_postal": null,
+                        "telefono": null,
+                        "movil": null,
+                        "email": null,
+                        "web": null,
+                        "cliente": true,
+                        "proveedor": false,
+                        "persona_juridica": false,
+                        "tipo_juridica": null,
+                        "notas": "",
+                        "id_besepa": ""
+                    },
+                    "relationships": {
+                        "posicion": {
+                            "data": null
+                        },
+                        "logo": {
+                            "data": null
+                        },
+                        "cuentas_contables": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "account",
+                                    "id": "408634"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /partners/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this partner
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "partner",
+                    "id": "2",
+                    "attributes": {
+                        "proveedor": true
+                    }
+                }
+            }
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "partner",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Ender",
+                        "nif": null,
+                        "fiscal_name": "Wiggin",
+                        "direccion": "",
+                        "pais_alpha2": "ES",
+                        "provincia": null,
+                        "poblacion": null,
+                        "codigo_postal": null,
+                        "telefono": null,
+                        "movil": null,
+                        "email": null,
+                        "web": null,
+                        "cliente": true,
+                        "proveedor": true,
+                        "persona_juridica": false,
+                        "tipo_juridica": null,
+                        "notas": "",
+                        "id_besepa": ""
+                    },
+                    "relationships": {
+                        "posicion": {
+                            "data": null
+                        },
+                        "logo": {
+                            "data": null
+                        },
+                        "cuentas_contables": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "account",
+                                    "id": "408634"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /partners/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this partner
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
+
 # Data Structures
 
 ## Money (object)
@@ -4356,6 +4655,36 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + Default: 4
 + libro (Journal, required)
 
+## Partner (object)
++ name (required) - **Maximum length: 120**
++ nif - **Maximum length: 120**
++ persona_juridica (boolean)
+    + Default: false
++ fiscal_name - **Maximum length: 200**
++ direccion
++ pais_alpha2 - **Maximum length: 2**
+    + Default: 'ES'
++ provincia - **Maximum length: 100**
++ poblacion - **Maximum length: 120**
++ codigo_postal - **Maximum length: 16**
++ telefono - **Maximum length: 64**
++ movil - **Maximum length: 64**
++ email
++ web - **Maximum length: 255**
++ cliente (boolean)
+    + Default: true
++ proveedor (boolean)
+    + Default: true
++ posicion (Tax Group)
++ tipo_juridica - **Maximum length: 50**
++ notas
+    + Default: ""
++ logo (Partner Photo)
++ id_besepa - **Maximum length: 50**
+    + Default: ""
+
+## Partner Photo
+
 ## Transaction
 
 ## Transaction Type
@@ -4364,9 +4693,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## Conciliation (object)
 
-## Partner (object)
 
-## Tax
+## Tax (object)
 
 ## Tax Filing (object)
 
