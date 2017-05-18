@@ -54,7 +54,7 @@ Where possible, API v1 strives to use appropriate HTTP verbs for each action.
 
 ## Multi-Tenancy
 Txerpa is a multi-tenant app so each client has a private data partitioning. To specify which tenant you are logging in yo must use `X-TXAPI-Client` header.
-This tenant selection also extends to all the requests.
+This tenant selection strategy also extends to all the requests.
 
 ## Authentication
 There are only way to authenticate through Txerpa API v1. Requests that require authentication will return `401 Unauthorized` if authentication credentials were not provided or invalid credentials.
