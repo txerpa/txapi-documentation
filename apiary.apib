@@ -16,7 +16,7 @@ All API access is over HTTPS, and accessed from the `https://api.txerpa.com`. Al
 Blank fields are included as `null` instead of being omitted.
 
 All timestamps return in the following format: `DD-MM-YYYY HH:MM:SS`
-    
+
 ## Parameters
 Many API methods take optional parameters. For GET requests, any parameters not specified as a segment in the path can be passed as an HTTP query string parameter:
 
@@ -29,6 +29,7 @@ Many API methods take optional parameters. For GET requests, any parameters not 
 In this example, the '1' value is provided for the `:entry_pk` parameter in the path while `:state` is passed in the query string.
 
 ## Root Endpoint
+**DISABLED**
 You can issue a `GET` request to the root endpoint to get API schema formatted with [Core API](http://www.coreapi.org) format-independent Document Object Model:
 
 ```
@@ -51,6 +52,10 @@ Where possible, API v1 strives to use appropriate HTTP verbs for each action.
 | PATCH | Used for updating **any** or **all** of a resource’s attributes. |
 | DELETE | Used for deleting resources. |
 
+## Multi-Tenancy
+Txerpa is a multi-tenant app so each client has a private data partitioning. To specify which tenant you are logging in yo must use `X-TXAPI-Client` header.
+This tenant selection also extends to all the requests.
+
 ## Authentication
 There are only way to authenticate through Txerpa API v1. Requests that require authentication will return `401 Unauthorized` if authentication credentials were not provided or invalid credentials.
 
@@ -58,7 +63,7 @@ There are only way to authenticate through Txerpa API v1. Requests that require 
 
 ```
   
- curl -H "Authorization: JWT JWT-TOKEN" -i https://api.txerpa.com/v1
+ curl -H "Authorization: JWT JWT-TOKEN" - H "X-TXAPI-Client: CLIENT_ID" -i https://api.txerpa.com/v1
   
 ```
 
