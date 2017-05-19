@@ -4958,7 +4958,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Retrive [GET /partners/{partner_id}/integrations/{id}]
 
 + Parameters
-    + id (number, required) ... A unique integer value identifying this analytical account line
+    + id (number, required) ... A unique integer value identifying this partner integration
 
 + Request (application/vnd.api+json)
     + Headers
@@ -4991,7 +4991,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Delete [DELETE /partners/{partner_id}/integrations/{id}]
 
 + Parameters
-    + id (number, required) ... A unique integer value identifying this analytical account line
+    + id (number, required) ... A unique integer value identifying this partner integration
 
 + Request (application/vnd.api+json)
     + Headers
@@ -5029,17 +5029,18 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         + `impuesto`
     + descripcion (string)
 
+    
 ## Account Category (object)
 + nombre (string)
 + descripcion (string)
-+ cuenta (Account) - Related account.
++ cuenta (object, required) - Account relation object
 
 ## Entry (object)
 + name (string, required)
 + numero (number, optional) - **Format: `positive`**
 + fecha (string, required) - **Format: `date`**, **Default: `now`**
-+ libro (Journal, required)
-+ periodo (Accounting Period, required)
++ libro (object, required) - Journal relation object
++ periodo (object, required) - Accounting Period relation object
 + estado (enum[string]) - Read only property
     + Members
         + `borrador`
@@ -5050,31 +5051,31 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + name (required)
 + debe(Money, required) - **Maximum length: 18**, **Decimal places: 6**
 + haber (Money, required) - **Maximum length: 18**, **Decimal places: 6**
-+ cuenta (Account, required)
-+ partner (Partner)
-+ asiento (Entry, required)
++ cuenta (object, required) - Account relation object
++ partner (object) - Partner relation object
++ asiento (object, required) - Entry relation object
 + fecha (required) -  **Format: `date`**
 + recc (boolean, required) - **Default: `false`**
-+ conciliacion (Conciliation)
++ conciliacion (object, required) - Concilitation relation object
 + estado (enum[string]) - **Read only**
     + Members
         + `borrador`
         + `asentado`
-+ analytical_lines (array[Analytical Line])
++ analytical_lines (array[object]) - Analytical Line relation object
 
 ## Tax Entry Record (object)
 + name (required)
 + base (Money, required) - **Maximum length: 18**, **Decimal places: 6**
 + cuota (Money, required) - **Maximum length: 18**, **Decimal places: 6**
-+ impuesto (Tax, required)
-+ periodo (Accounting Period, required)
++ impuesto (object, required) - Tax relation object
++ periodo (object, required) - Accounting Period relation object
 + state (enum[string]) - **Read only**
     + Members
         + `borrador`
         + `asentado`
-+ asiento (Entry, required)
-+ tercero (Partner)
-+ liquidacion (Tax Filing)
++ asiento (object, required) - Entry relation object
++ tercero (object) - Partner relation object
++ liquidacion (object) - Tax Filing relation object
 
 ## Journal (object)
 + name (required) - **Maximum length: 120**
@@ -5092,26 +5093,26 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         + 1
         + 3
         + 12
-+ libro (Journal, required)
-+ tipo (Asset Type, required)
++ libro (object, required) - Journal relation object
++ tipo (object, required) - Asset Type relation object
 + estado (enum[string]) - **Read only**
     + Members
         + `borrador`
         + `proceso`
 
-+ factura (Invoice)
++ factura (object) - Invoice relation object
 
 ## Asset Type (object)
 + name
-+ cuenta_activo (Account)
-+ cuenta_amortizacion (Account)
-+ cuenta_gasto (Account)
++ cuenta_activo (object) - Account relation object
++ cuenta_amortizacion (object) - Account relation object
++ cuenta_gasto (object) - Account relation object
 + porcentaje - Percentage of annual amortization of the good, using hundred percent format. **Format: `decimal`**, **Maximum length: 5**, **Decimal places: 2**
 
 ## Amortization (object)
 + name (required) - **Maximum length: 120**
 + fecha (required) - Date of purchase of the asset. **Format: `date`**
-+ activo (Asset, required)
++ activo (object, required) - Asset relation object
 + cantidad (Money, required) - **Maximum length: 18**, **Decimal places: 6**
 + state (enum[string]) - **Read only**
     + Members
@@ -5120,7 +5121,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         
 ## Accounting Period (object)
 + name (string)
-+ anyo_fiscal (Fiscal Year)
++ anyo_fiscal (object) - Fiscal Year relation object
 + dia_inicio (string)
 + dia_fin (string)
 + limite_domiciliacion (string)
@@ -5145,8 +5146,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + Members
         + `TE` - Template type
         + `AN` - Analyzable type
-+ analyzable_object (object) - Any analyzable or analyzable template object. Currently available as template are: `Billing Serie`, `Product`, `Partner`, `Invoice Line` and as analyzable: `Entry Record`.
-+ analytical_account (Analytical Account)
++ analyzable_object (object, required) - Any analyzable or analyzable template relation object. Currently available as template are: `Billing Serie`, `Product`, `Partner`, `Invoice Line` and as analyzable: `Entry Record`.
++ analytical_account (object, required) - Analytical Account relation object
 
 ## Invoice
 + amount - **Maximum length: 120**
@@ -5177,14 +5178,14 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + Members
         + `borrador`
         + `asentado`
-+ serie (Billing Serie, required)
-+ tercero (Partner, required)
-+ ejercicio (Fiscal Year)
-+ periodo (Accounting Period)
-+ posicion_fiscal (Tax Group)
-+ original (Invoice)
-+ asiento (Entry)
-+ metodo_pago (Transaction Type)
++ serie (object, required) - Billing Serie relation object
++ tercero (object) - Partner relation object
++ ejercicio (object) - Fiscal Year relation object
++ periodo (object) - Accounting Period relation object
++ posicion_fiscal (object) - Tax Group relation object
++ original (object) - Invoice relation object
++ asiento (object) - Entry relation object
++ metodo_pago (object) - Transaction Type relation object
 
 ## Invoice Line
 + name (required) - **Maximum length: 120**
@@ -5192,12 +5193,12 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + unidades (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
 + precio_unitario (required) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
 + porcentaje_descuento_linea - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
-+ impuestos (array[Tax], required)
-+ factura (Invoice, required)
-+ cuenta (Invoice, required)
-+ tipo_activo (Asset Type)
-+ producto (Product)
-+ analytical_lines (array[Analytical Line])
++ impuestos (array[object], required) - Tax relation object
++ factura (object, required) - Invoice relation object
++ cuenta (object, required) - Account relation object
++ tipo_activo (object) - Asset Type relation object
++ producto (object) - Product relation object
++ analytical_lines (array[object]) - Analytical Line relation object
 
 ## Invoice Email
 + email (required) - **Maximum length: 128**
@@ -5206,7 +5207,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + created - **Read only**, **Fromat: `datetime`**
     + Default: `now`
 + status - **Read only**
-+ factura (Invoice, required)
++ factura (object, required) - Invoice relation object
 
 ## Billing Serie
 + name (required) - **Maximum length: 120**
@@ -5220,8 +5221,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + sufijo - **Maximum length: 8**
 + relleno (number)
     + Default: 4
-+ libro (Journal, required)
-+ analytical_lines (array[Analytical Line])
++ libro (object, required) - Journal relation object
++ analytical_lines (array[object]) - Analytical Line relation object
 
 ## Partner (object)
 + name (required) - **Maximum length: 120**
@@ -5243,31 +5244,19 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + Default: true
 + proveedor (boolean)
     + Default: true
-+ posicion (Tax Group)
++ posicion (object) - Tax Group relation object
 + tipo_juridica - **Maximum length: 50**
 + notas
     + Default: ""
 + logo - **Format: base64 image**
 + id_besepa - **Maximum length: 50**
     + Default: ""
-+ analytical_lines (array[Analytical Line])
++ analytical_lines (array[object]) - Analytical Line relation object
++ cuentas_contables (array[object]) - Account relation object
 
 ## Partner Integration (object)
 + integration (required) - **Maximum length: 80**
 + key (required) - **Maximum length: 256**
-+ partner (Partner, required)
++ partner (object) - Partner relation object
 
-## Transaction
-
-## Transaction Type
-
-## Tax Group
-
-## Conciliation (object)
-
-## Tax (object)
-
-## Tax Filing (object)
-
-## Product (object)
-+ analytical_lines (array[Analytical Line])
+## Transaction (object)
