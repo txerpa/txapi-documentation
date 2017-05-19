@@ -4843,6 +4843,165 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
             
 + Response 204
 
+# Partner Integrations [/partners/{partner_id}/integrations{?page,page_size,search,ordering}]
+**TO-DO** Descripció Integrations
+
++ Parameters
+    + partner_id (required, number) ... A unique integer value identifying this analytical account line parent
+    
++ Attributes (Partner Integration)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                   "links": {
+                       "first": "https://api.txerpa.com/v1/analytical_integrations/1/integrations?page=1",
+                       "last": "https://api.txerpa.com/v1/analytical_integrations/1/integrations?page=1",
+                       "next": null,
+                       "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "partner_integration",
+                            "id": "1056727",
+                            "attributes": {
+                                "integration": "openerp_id",
+                                "key": "287472"
+                            },
+                            "relationships": {
+                                "partner": {
+                                    "data": {
+                                        "type": "partner",
+                                        "id": "1"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "partner_integration",
+                    "attributes": {
+                        "integration": "openerp",
+                        "key": "6570730587"
+                    },
+                    "relationships": {
+                        "partner": {
+                            "data": {
+                                "type": "partner",
+                                "id": "434704"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": {
+                        "type": "partner_integration",
+                        "id": "1096899",
+                        "attributes": {
+                            "integration": "openerp",
+                            "key": "6570730587"
+                        },
+                        "relationships": {
+                            "partner": {
+                                "data": {
+                                    "type": "partner",
+                                    "id": "434704"
+                                }
+                            }
+                        }
+                    }
+                }
+
+## Retrive [GET /partners/{partner_id}/integrations/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this analytical account line
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "partner_integration",
+                    "id": "1056726",
+                    "attributes": {
+                        "integration": "openerp",
+                        "key": "570730587"
+                    },
+                    "relationships": {
+                        "partner": {
+                            "data": {
+                                "type": "partner",
+                                "id": "279033"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /partners/{partner_id}/integrations/{id}]
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this analytical account line
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Accept: application/vnd.api+json
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
 
 
 # Data Structures
@@ -5088,12 +5247,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + tipo_juridica - **Maximum length: 50**
 + notas
     + Default: ""
-+ logo (Partner Photo)
++ logo - **Format: base64 image**
 + id_besepa - **Maximum length: 50**
     + Default: ""
 + analytical_lines (array[Analytical Line])
 
-## Partner Photo
+## Partner Integration (object)
++ integration (required) - **Maximum length: 80**
++ key (required) - **Maximum length: 256**
++ partner (Partner, required)
 
 ## Transaction
 
