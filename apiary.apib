@@ -189,7 +189,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 # Group Accounting
 **TO-DO** Descripció Accounting API
 
-# Accounts [/accounting/accounts{?page,page_size,tipo,search,ordering}]
+# Accounts [/accounting/accounts{?page,page_size,tipo,active,search,ordering}]
 **TO-DO** Descripció Accounts
 
 + Attributes (Account)
@@ -202,6 +202,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + page_size (number, optional) ... Number of results to return per page.
 
     + tipo (optional) ... Filter by tipo field.
+    
+    + active (boolean, optional) ... Filter by active periods.
 
     + search (optional) ... A search term.
 
@@ -5004,6 +5006,380 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 
 
+# Group Products
+**TO-DO** Descripció Products API
+
+# Products [/products{?page,page_size,search,ordering}]
+**TO-DO** Descripció Products
+
++ Attributes (Product)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+
+    + search (optional) ... A search term.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "links": {
+                        "first": "https://api.txerpa.com/v1/products?page=1",
+                        "last": "https://api.txerpa.com/v1/products?page=1",
+                        "next": null,
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "product",
+                            "id": "1",
+                            "attributes": {
+                                "name": "Producto 1",
+                                "descripcion": "",
+                                "precio_venta": {
+                                    "amount": 10
+                                    "currency": "EUR"
+                                },
+                                "precio_compra": {
+                                    "amount": 5
+                                    "currency": "EUR"
+                                },
+                                "referencia": null,
+                                "activo": true
+                            },
+                            "relationships": {
+                                "cuenta_ingresos": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "1191"
+                                    }
+                                },
+                                "cuenta_gastos": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "860"
+                                    }
+                                },
+                                "impuestos_venta": {
+                                    "meta": {
+                                        "count": 1
+                                    },
+                                    "data": [
+                                        {
+                                            "type": "tax",
+                                            "id": "8"
+                                        }
+                                    ]
+                                },
+                                "impuestos_compra": {
+                                    "meta": {
+                                        "count": 1
+                                    },
+                                    "data": [
+                                        {
+                                            "type": "tax",
+                                            "id": "25"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "product",
+                    "attributes": {
+                        "name": "Producto 1",
+                        "precio_venta": {
+                            "amount": 10.0,
+                            "currency": "EUR"
+                        },
+                        "precio_compra": {
+                            "amount": 5
+                            "currency": "EUR"
+                        }
+                    },
+                    "relationships": {
+                        "cuenta_ingresos": {
+                            "data": {
+                                "type": "account",
+                                "id": "280361"
+                            }
+                        },
+                        "cuenta_gastos": {
+                            "data": {
+                                "type": "account",
+                                "id": "860"
+                            }
+                        },
+                        "impuestos_venta": {
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            ]
+                        },
+                        "impuestos_compra": {
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "25"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "product",
+                    "id": "15",
+                    "attributes": {
+                        "name": "Producto 1",
+                        "descripcion": "",
+                        "precio_venta": {
+                            "amount": 10.0,
+                            "currency": "EUR"
+                        },
+                        "precio_compra": {
+                            "amount": 5
+                            "currency": "EUR"
+                        }
+                        "referencia": null,
+                        "activo": true
+                    },
+                    "relationships": {
+                        "cuenta_ingresos": {
+                            "data": {
+                                "type": "account",
+                                "id": "280361"
+                            }
+                        },
+                        "cuenta_gastos": {
+                            "data": {
+                                "type": "account",
+                                "id": "860"
+                            }
+                        },
+                        "impuestos_venta": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            ]
+                        },
+                        "impuestos_compra": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "25"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+
+## Retrive [GET /products/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this invoice
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "product",
+                    "id": "15",
+                    "attributes": {
+                        "name": "Producto 1",
+                        "descripcion": "",
+                        "precio_venta": {
+                            "amount": 10.0,
+                            "currency": "EUR"
+                        },
+                        "precio_compra": {
+                            "amount": 5
+                            "currency": "EUR"
+                        }
+                        "referencia": null,
+                        "activo": true
+                    },
+                    "relationships": {
+                        "cuenta_ingresos": {
+                            "data": {
+                                "type": "account",
+                                "id": "280361"
+                            }
+                        },
+                        "cuenta_gastos": {
+                            "data": {
+                                "type": "account",
+                                "id": "860"
+                            }
+                        },
+                        "impuestos_venta": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            ]
+                        },
+                        "impuestos_compra": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "25"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /products/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this invoice
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "product",
+                    "id": "15",
+                    "attributes": {
+                        "referencia": "ESPA0001"
+                    }
+                }
+            }
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "product",
+                    "id": "15",
+                    "attributes": {
+                        "name": "Producto 1",
+                        "descripcion": "",
+                        "precio_venta": {
+                            "amount": 10.0,
+                            "currency": "EUR"
+                        },
+                        "precio_compra": {
+                            "amount": 5
+                            "currency": "EUR"
+                        }
+                        "referencia": "ESPA0001",
+                        "activo": true
+                    },
+                    "relationships": {
+                        "cuenta_ingresos": {
+                            "data": {
+                                "type": "account",
+                                "id": "280361"
+                            }
+                        },
+                        "cuenta_gastos": {
+                            "data": {
+                                "type": "account",
+                                "id": "860"
+                            }
+                        },
+                        "impuestos_venta": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            ]
+                        },
+                        "impuestos_compra": {
+                            "meta": {
+                                "count": 1
+                            },
+                            "data": [
+                                {
+                                    "type": "tax",
+                                    "id": "25"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /products/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this invoice
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
+
 # Data Structures
 
 ## Money (object)
@@ -5258,5 +5634,19 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + integration (required) - **Maximum length: 80**
 + key (required) - **Maximum length: 256**
 + partner (object) - Partner relation object
+
+## Product (object)
++ name (required) - **Maximum length: 120**
++ descripcion
+    + Default: ""
++ precio_venta (Money, required) - **Maximum length: 18**, **Decimal places: 6**
++ precio_compra (Money, required) - **Maximum length: 18**, **Decimal places: 6**, **Default: 0.0**
++ cuenta_ingresos (object, required) - Account relation object
++ cuenta_gastos (object, required) - Account relation object
++ impuestos_venta (array[object]) - Tax relation object
++ impuestos_compra (array[object]) - Tax relation object
++ referencia (required) - **Maximum length: 50**
++ activo (boolean)
+    + Default: true
 
 ## Transaction (object)
