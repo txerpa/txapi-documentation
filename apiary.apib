@@ -30,7 +30,6 @@ In this example, the '1' value is provided for the `:entry_pk` parameter in the 
 
 ## Root Endpoint
 **DISABLED**
-You can issue a `GET` request to the root endpoint to get API schema formatted with [Core API](http://www.coreapi.org) format-independent Document Object Model:
 
 ```
   
@@ -52,29 +51,26 @@ Where possible, API v1 strives to use appropriate HTTP verbs for each action.
 | PATCH | Used for updating **any** or **all** of a resource’s attributes. |
 | DELETE | Used for deleting resources. |
 
-## Multi-Tenancy
-Txerpa is a multi-tenant app so each client has a private data partitioning. To specify which tenant you are logging in yo must use `X-TXAPI-Client` header.
-This tenant selection strategy also extends to all the requests.
 
 ## Authentication
-There are only way to authenticate through Txerpa API v1. Requests that require authentication will return `401 Unauthorized` if authentication credentials were not provided or invalid credentials.
+There is only one way to authenticate through Txerpa API v1. Requests that require authentication will return `401 Unauthorized` if authentication credentials were not provided or invalid credentials.
 
 ### JWT Token
 
 ```
   
- curl -H "Authorization: JWT JWT-TOKEN" - H "X-TXAPI-Client: CLIENT_ID" -i https://api.txerpa.com/v1
+ curl -H "Authorization: JWT JWT-TOKEN"  -i https://api.txerpa.com/v1
   
 ```
 
-Read more about [JWT](https://jwt.io/).
+Read more about [JWT](https://jwt.io/) or you can view [detailed endpoints](#reference/authentication/auth)
 
 ## Pagination
 Requests that return multiple items will be paginated to 10 items by default. You can specify further pages with the `?page` parameter. For some resources, you can also set a custom page size up to 100 with the `?page_size` parameter.
 
 ```
  
- curl -H "Authorization: JWT JWT-TOKEN" - H "X-TXAPI-Client: CLIENT_ID" -i 'https://api.txerpa.com/v1/accounting/entries?page=2&page_size=50'
+ curl -H "Authorization: JWT JWT-TOKEN" -i 'https://api.txerpa.com/v1/accounting/entries?page=2&page_size=50'
   
 ```
 
@@ -93,7 +89,7 @@ Here's a sample request sent from a browser hitting `http://example.com`:
 
 ```
  
- curl -i https://api.txerpa.com -H "Origin: http://example.com" -H "Authorization: JWT JWT-TOKEN" - H "X-TXAPI-Client: CLIENT_ID"
+ curl -i https://api.txerpa.com -H "Origin: http://example.com" -H "Authorization: JWT JWT-TOKEN"
  HTTP/1.0 200 OK
  Access-Control-Allow-Origin: *
  Access-Control-Expose-Headers: Content-Disposition
@@ -104,7 +100,7 @@ This is what the CORS preflight request looks like:
 
 ```
  
- curl -i https://api.txerpa.com -H "Origin: http://example.com" -H "Authorization: JWT JWT-TOKEN" - H "X-TXAPI-Client: CLIENT_ID"
+ curl -i https://api.txerpa.com -H "Origin: http://example.com" -H "Authorization: JWT JWT-TOKEN"
  HTTP/1.0 200 OK
  Access-Control-Allow-Origin: *
  Access-Control-Allow-Headers: accept, accept-encoding, authorization, content-type, dnt, origin, user-agent, x-csrftoken, x-requested-with
@@ -119,11 +115,14 @@ This is what the CORS preflight request looks like:
 **TO-DO** Descripció Authentication API
 
 
-# Auth [/auth]
+# Auth [/auth/{client_id}]
+<a name="auth-anchor"></a>
 Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## Create [POST]
-
++ Parameters
+    + client_id ... API client id.
+    
 + Attributes
     + username (required)
     + password (required)
@@ -5382,6 +5381,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 # Group Clients
 **TO-DO** Descripció Clients API
 
+
 # Preferences [/preferences{?page,page_size,search,ordering}]
 **TO-DO** Descripció Preferences
 
@@ -5530,6 +5530,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
             
 + Response 204
+
 
 
 # Data Structures
@@ -5693,7 +5694,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + numero_str - **Maximum length: 80**
 + numero (number)
 + numero_proveedor - **Maximum length: 80**
-+ currency - ISO 4217 currency code. **Default: `EUR`**
++ currency - ISO 4217 currency code.
+    + Default: `EUR`
 + direccion_receptor
 + direccion_emisor
 + base (Money) - **Read only**
@@ -5804,5 +5806,9 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Preference (object)
 + key (required) - **Unique**, **Maximum length: 50**
 + value (required)
+
+## Backup (object)
++ schema_name (required) - **Write Only**, **Unique**, **Maximum length: 63**
++ name - **Read Only**
 
 ## Transaction (object)
