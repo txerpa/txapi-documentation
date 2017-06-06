@@ -116,7 +116,6 @@ This is what the CORS preflight request looks like:
 
 
 # Auth [/auth/{client_id}]
-<a name="auth-anchor"></a>
 Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## Create [POST]
@@ -128,10 +127,6 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + password (required)
 
 + Request (application/vnd.api+json)
-    + Headers
-
-            Accept: application/vnd.api+json
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -161,9 +156,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -211,10 +204,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -261,9 +252,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -305,10 +294,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -335,10 +322,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -377,10 +362,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 
@@ -403,10 +386,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -469,10 +450,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -523,10 +502,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -577,9 +554,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -646,10 +621,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -688,10 +661,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -742,10 +713,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 ## Validate Entry [POST /accounting/entries/{id}/validations]
@@ -756,10 +725,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 201 (application/vnd.api+json)
 
     + Body
@@ -799,10 +766,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 201 (application/vnd.api+json)
 
     + Body
@@ -856,10 +821,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -924,9 +887,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -1014,10 +975,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -1070,10 +1029,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -1146,10 +1103,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 # Tax Entry Records [/accounting/entries/{entry_id}/tax_records{?page,page_size,search,ordering}]
@@ -1174,10 +1129,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
 
@@ -1235,9 +1188,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -1329,10 +1280,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -1384,10 +1333,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -1458,10 +1405,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 
@@ -1483,10 +1428,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -1520,9 +1463,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -1556,10 +1497,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -1581,10 +1520,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -1618,10 +1555,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 
@@ -1643,10 +1578,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -1710,9 +1643,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -1791,10 +1722,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -1840,10 +1769,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -1901,10 +1828,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 
@@ -1916,10 +1841,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 201 (application/vnd.api+json)
 
     + Body
@@ -1969,10 +1892,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 201 (application/vnd.api+json)
 
     + Body
@@ -2035,10 +1956,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2122,9 +2041,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -2180,10 +2097,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2217,10 +2132,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -2266,10 +2179,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 ## Annotate Amortization [POST /accounting/assets/{asset_id}/amortizations/{id}/annotations]
@@ -2280,7 +2191,6 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
 
 + Response 201 (application/vnd.api+json)
@@ -2328,10 +2238,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2390,10 +2298,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2455,10 +2361,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2511,10 +2415,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2561,10 +2463,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2610,10 +2510,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2646,8 +2544,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + Headers
 
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.ms-excel)
 
 
@@ -2667,8 +2564,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + Headers
 
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.ms-excel)
 
 
@@ -2693,10 +2589,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request XLSX Report
     + Headers
 
-            Accept: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
 
 + Request CSV Report
@@ -2733,10 +2627,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2787,10 +2679,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2829,10 +2719,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2881,9 +2769,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -2946,10 +2832,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -2986,10 +2870,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -3038,10 +2920,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 
@@ -3082,10 +2962,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -3186,10 +3064,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
 
             {
@@ -3292,10 +3168,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -3377,10 +3251,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -3474,10 +3346,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 
@@ -3489,10 +3359,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 201 (application/vnd.api+json)
 
     + Body
@@ -3578,10 +3446,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 201 (application/vnd.api+json)
 
     + Body
@@ -3666,10 +3532,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 201 (application/vnd.api+json)
 
     + Body
@@ -3771,10 +3635,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -3846,9 +3708,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -3943,10 +3803,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -4006,10 +3864,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -4081,10 +3937,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 # Invoice Transactions [/billing/invoices/{invoice_id}/transactions{?page,page_size,search,ordering}]
@@ -4108,10 +3962,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -4189,10 +4041,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -4238,9 +4088,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -4296,10 +4144,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -4344,10 +4190,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -4393,9 +4237,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -4451,10 +4293,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -4488,10 +4328,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -4537,10 +4375,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 
@@ -4577,10 +4413,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -4632,9 +4466,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
 
     + Body
 
@@ -4705,10 +4537,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 200 (application/vnd.api+json)
     + Body
     
@@ -4766,10 +4596,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
     + Body
     
             {
@@ -4838,10 +4666,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
-            X-TXAPI-Client: {client_id}
-            
+
 + Response 204
 
 # Partner Integrations [/partners/{partner_id}/integrations{?page,page_size,search,ordering}]
@@ -4865,7 +4691,6 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
 
 + Response 200 (application/vnd.api+json)
@@ -4910,7 +4735,6 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
 
 
@@ -4964,7 +4788,6 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
 
 + Response 200 (application/vnd.api+json)
@@ -4997,12 +4820,10 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Request (application/vnd.api+json)
     + Headers
 
-            Accept: application/vnd.api+json
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
 
             
 + Response 204
-
 
 
 # Group Products
@@ -5378,8 +5199,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Response 204
 
 
-# Group Clients
-**TO-DO** Descripció Clients API
+# Group Preferences
+**TO-DO** Descripció Preferences API
 
 
 # Preferences [/preferences{?page,page_size,search,ordering}]
