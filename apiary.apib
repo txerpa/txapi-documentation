@@ -2980,6 +2980,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "id": "182694",
                             "attributes": {
                                 "currency": "EUR",
+                                "taxsummary": [
+                                    {
+                                        "base": 4510897.16,
+                                        "base_original": 4510897.164,
+                                        "cuota": 63152.56,
+                                        "cuota_original": 63152.56,
+                                        "impuesto": 17
+                                    }
+                                ],
                                 "name": "Factura",
                                 "tipo": "venta",
                                 "fecha": "01-12-2016",
@@ -3102,6 +3111,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224106",
                     "attributes": {
                         "currency": "EUR",
+                        "taxsummary": [
+                            {
+                                "base": 4510897.16,
+                                "base_original": 4510897.164,
+                                "cuota": 63152.56,
+                                "cuota_original": 63152.56,
+                                "impuesto": 17
+                            }
+                        ],
                         "name": "Factura 1",
                         "tipo": "venta",
                         "fecha": "12-05-2017",
@@ -3179,6 +3197,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224078",
                     "attributes": {
                         "currency": "EUR",
+                        "taxsummary": [
+                            {
+                                "base": 4510897.16,
+                                "base_original": 4510897.164,
+                                "cuota": 63152.56,
+                                "cuota_original": 63152.56,
+                                "impuesto": 17
+                            }
+                        ],
                         "name": "Factura",
                         "tipo": "venta",
                         "fecha": "10-04-2017",
@@ -3274,6 +3301,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224078",
                     "attributes": {
                         "currency": "EUR",
+                        "taxsummary": [
+                            {
+                                "base": 4510897.16,
+                                "base_original": 4510897.164,
+                                "cuota": 63152.56,
+                                "cuota_original": 63152.56,
+                                "impuesto": 17
+                            }
+                        ],
                         "name": "Factura",
                         "tipo": "venta",
                         "fecha": "10-04-2017",
@@ -3371,6 +3407,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224108",
                     "attributes": {
                         "currency": "EUR",
+                        "taxsummary": [
+                            {
+                                "base": 4510897.16,
+                                "base_original": 4510897.164,
+                                "cuota": 63152.56,
+                                "cuota_original": 63152.56,
+                                "impuesto": 17
+                            }
+                        ],
                         "name": "Factura 1",
                         "tipo": "venta",
                         "fecha": "12-05-2017",
@@ -3458,6 +3503,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224108",
                     "attributes": {
                         "currency": "EUR",
+                        "taxsummary": [
+                            {
+                                "base": 4510897.16,
+                                "base_original": 4510897.164,
+                                "cuota": 63152.56,
+                                "cuota_original": 63152.56,
+                                "impuesto": 17
+                            }
+                        ],
                         "name": "Factura 1",
                         "tipo": "venta",
                         "fecha": "12-05-2017",
@@ -3544,6 +3598,15 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224109",
                     "attributes": {
                         "currency": "EUR",
+                        "taxsummary": [
+                            {
+                                "base": 4510897.16,
+                                "base_original": 4510897.164,
+                                "cuota": 63152.56,
+                                "cuota_original": 63152.56,
+                                "impuesto": 17
+                            }
+                        ],
                         "name": "Factura 1 Rectificada",
                         "tipo": "venta",
                         "fecha": "12-05-2017",
@@ -5537,6 +5600,14 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + original (object) - Invoice relation object
 + asiento (object) - Entry relation object
 + metodo_pago (object) - Transaction Type relation object
++ taxsummary (array[taxsummary]) - Invoice Tax summary
+
+## taxsummary (object)
++ base (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ base_original (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ cuota (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ cuota_original (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ impuesto (number) - Tax ID
 
 ## Invoice Line
 + name (required) - **Maximum length: 120**
