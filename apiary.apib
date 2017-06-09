@@ -2986,7 +2986,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                         "base_original": 4510897.164,
                                         "cuota": 63152.56,
                                         "cuota_original": 63152.56,
-                                        "impuesto": 17
+                                        "impuesto": "IVAVENTARE14"
                                     }
                                 ],
                                 "name": "Factura",
@@ -3117,7 +3117,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "base_original": 4510897.164,
                                 "cuota": 63152.56,
                                 "cuota_original": 63152.56,
-                                "impuesto": 17
+                                "impuesto": "IVAVENTARE14"
                             }
                         ],
                         "name": "Factura 1",
@@ -3203,7 +3203,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "base_original": 4510897.164,
                                 "cuota": 63152.56,
                                 "cuota_original": 63152.56,
-                                "impuesto": 17
+                                "impuesto": "IVAVENTARE14"
                             }
                         ],
                         "name": "Factura",
@@ -3307,7 +3307,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "base_original": 4510897.164,
                                 "cuota": 63152.56,
                                 "cuota_original": 63152.56,
-                                "impuesto": 17
+                                "impuesto": "IVAVENTARE14"
                             }
                         ],
                         "name": "Factura",
@@ -3413,7 +3413,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "base_original": 4510897.164,
                                 "cuota": 63152.56,
                                 "cuota_original": 63152.56,
-                                "impuesto": 17
+                                "impuesto": "IVAVENTARE14"
                             }
                         ],
                         "name": "Factura 1",
@@ -3509,7 +3509,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "base_original": 4510897.164,
                                 "cuota": 63152.56,
                                 "cuota_original": 63152.56,
-                                "impuesto": 17
+                                "impuesto": "IVAVENTARE14"
                             }
                         ],
                         "name": "Factura 1",
@@ -3604,7 +3604,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "base_original": 4510897.164,
                                 "cuota": 63152.56,
                                 "cuota_original": 63152.56,
-                                "impuesto": 17
+                                "impuesto": "IVAVENTARE14"
                             }
                         ],
                         "name": "Factura 1 Rectificada",
@@ -3858,6 +3858,106 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         }
                     }
                 }
+
+## Bulk Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "type": "invoice_line",
+                        "attributes": {
+                            "name": "default",
+                            "unidades": "1.000000",
+                            "precio_unitario": "50.000000"
+                        },
+                        "relationships": {
+                            "factura": {
+                                "data": {
+                                    "type": "invoice",
+                                    "id": "224108"
+                                }
+                            },
+                            "cuenta": {
+                                "data": {
+                                    "type": "account",
+                                    "id": "1191"
+                                }
+                            },
+                            "impuestos": {
+                                "data": [
+                                    {
+                                        "type": "tax",
+                                        "id": "8"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+            
+            
++ Response 201 (application/vnd.api+json)
+    
+        {  
+            "data": [  
+                {  
+                    "type": "invoice_line",
+                    "id": "224189",
+                    "attributes": {  
+                        "name": "default",
+                        "descripcion": null,
+                        "unidades": "1.000000",
+                        "precio_unitario": "50.000000",
+                        "porcentaje_descuento_linea": null
+                    },
+                    "relationships": {  
+                        "analytical_lines": {  
+                            "data": [  
+        
+                            ]
+                        },
+                        "factura": {  
+                            "data": {  
+                                "type": "invoice",
+                                "id": "224108"
+                            }
+                        },
+                        "cuenta": {  
+                            "data": {  
+                                "type": "account",
+                                "id": "1191"
+                            }
+                        },
+                        "tipo_activo": {  
+                            "data": null
+                        },
+                        "producto": {  
+                            "data": null
+                        },
+                        "impuestos": {  
+                            "meta":{  
+                                "count": 1
+                            },
+                            "data":[  
+                                {  
+                                    "type": "tax",
+                                    "id": "8"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+
 ## Retrive [GET /billing/invoices/{invoice_id}/lines/{id}]
 
 + Parameters
@@ -4235,7 +4335,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
             }
  
  
-# Billing Series [/accounting/billing_series{?page,page_size,search,ordering}]
+# Billing Series [/accounting/billing_series{?page,page_size,name,tipo,ordering}]
 **TO-DO** Descripció Billing Series
 
 + Attributes (Billing Serie)
@@ -4246,7 +4346,9 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
     + page_size (number, optional) ... Number of results to return per page.
     
-    + search (optional) ... A search term.
+    + name (optional) ... A name to be filtered.
+    
+    + tipo (optional) ... A tipo to be filtered.
 
     + ordering (optional) ... Which field to use when ordering the results.
     
@@ -5607,7 +5709,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + base_original (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
 + cuota (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
 + cuota_original (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
-+ impuesto (number) - Tax ID
++ impuesto - Tax code
 
 ## Invoice Line
 + name (required) - **Maximum length: 120**
