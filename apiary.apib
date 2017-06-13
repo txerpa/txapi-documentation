@@ -2980,15 +2980,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "id": "182694",
                             "attributes": {
                                 "currency": "EUR",
-                                "taxsummary": [
-                                    {
-                                        "base": 4510897.16,
-                                        "base_original": 4510897.164,
-                                        "cuota": 63152.56,
-                                        "cuota_original": 63152.56,
-                                        "impuesto": "IVAVENTARE14"
-                                    }
-                                ],
+                                "tax_summary": [{
+                                    "base": 4510897.16,
+                                    "base_original": 4510897.164,
+                                    "cuota": 63152.56,
+                                    "cuota_original": 63152.56,
+                                    "impuesto": "IVAVENTARE14"
+                                }],
                                 "name": "Factura",
                                 "tipo": "venta",
                                 "fecha": "01-12-2016",
@@ -3015,7 +3013,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                     amount: "0.0"
                                 },
                                 "notas": "**** **** ****",
-                                "estado": "pendiente"
+                                "estado": "pendiente",
+                                "pendiente": 15842.0
                         },
                         "relationships": {
                             "asiento": {
@@ -3034,6 +3033,12 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "data": {
                                     "type": "partner",
                                     "id": "296514"
+                                }
+                            },
+                            "cuenta_tercero": {
+                                "data": {
+                                    "type": "account",
+                                    "id": "297875"
                                 }
                             },
                             "ejercicio": {
@@ -3111,15 +3116,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224106",
                     "attributes": {
                         "currency": "EUR",
-                        "taxsummary": [
-                            {
-                                "base": 4510897.16,
-                                "base_original": 4510897.164,
-                                "cuota": 63152.56,
-                                "cuota_original": 63152.56,
-                                "impuesto": "IVAVENTARE14"
-                            }
-                        ],
+                        "tax_summary": [{
+                            "base": 4510897.16,
+                            "base_original": 4510897.164,
+                            "cuota": 63152.56,
+                            "cuota_original": 63152.56,
+                            "impuesto": "IVAVENTARE14"
+                        }],
                         "name": "Factura 1",
                         "tipo": "venta",
                         "fecha": "12-05-2017",
@@ -3138,7 +3141,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "cuota_original_currency": "EUR",
                         "cuota_original": 0.0,
                         "notas": "",
-                        "estado": "borrador"
+                        "estado": "borrador",
+                        "pendiente": 15842.0
                     },
                     "relationships": {
                         "asiento": {
@@ -3154,6 +3158,12 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "data": {
                                 "type": "partner",
                                 "id": "280941"
+                            }
+                        },
+                        "cuenta_tercero": {
+                            "data": {
+                                "type": "account",
+                                "id": "297875"
                             }
                         },
                         "ejercicio": {
@@ -3197,15 +3207,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224078",
                     "attributes": {
                         "currency": "EUR",
-                        "taxsummary": [
-                            {
-                                "base": 4510897.16,
-                                "base_original": 4510897.164,
-                                "cuota": 63152.56,
-                                "cuota_original": 63152.56,
-                                "impuesto": "IVAVENTARE14"
-                            }
-                        ],
+                        "tax_summary": [{
+                            "base": 4510897.16,
+                            "base_original": 4510897.164,
+                            "cuota": 63152.56,
+                            "cuota_original": 63152.56,
+                            "impuesto": "IVAVENTARE14"
+                        }],
                         "name": "Factura",
                         "tipo": "venta",
                         "fecha": "10-04-2017",
@@ -3224,7 +3232,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "cuota_original_currency": "EUR",
                         "cuota_original": 0.0,
                         "notas": "",
-                        "estado": "borrador"
+                        "estado": "borrador",
+                        "pendiente": 15842.0
                     },
                     "relationships": {
                         "asiento": {
@@ -3240,6 +3249,12 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "data": {
                                 "type": "partner",
                                 "id": "280941"
+                            }
+                        },
+                        "cuenta_tercero": {
+                            "data": {
+                                "type": "account",
+                                "id": "297875"
                             }
                         },
                         "ejercicio": {
@@ -3301,15 +3316,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224078",
                     "attributes": {
                         "currency": "EUR",
-                        "taxsummary": [
-                            {
-                                "base": 4510897.16,
-                                "base_original": 4510897.164,
-                                "cuota": 63152.56,
-                                "cuota_original": 63152.56,
-                                "impuesto": "IVAVENTARE14"
-                            }
-                        ],
+                        "tax_summary": [{
+                            "base": 4510897.16,
+                            "base_original": 4510897.164,
+                            "cuota": 63152.56,
+                            "cuota_original": 63152.56,
+                            "impuesto": "IVAVENTARE14"
+                        }],
                         "name": "Factura",
                         "tipo": "venta",
                         "fecha": "10-04-2017",
@@ -3328,7 +3341,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "cuota_original_currency": "EUR",
                         "cuota_original": 0.0,
                         "notas": "",
-                        "estado": "borrador"
+                        "estado": "borrador",
+                        "pendiente": 15842.0
                     },
                     "relationships": {
                         "asiento": {
@@ -3344,6 +3358,12 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "data": {
                                 "type": "partner",
                                 "id": "280941"
+                            }
+                        },
+                        "cuenta_tercero": {
+                            "data": {
+                                "type": "account",
+                                "id": "297875"
                             }
                         },
                         "ejercicio": {
@@ -3407,15 +3427,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224108",
                     "attributes": {
                         "currency": "EUR",
-                        "taxsummary": [
-                            {
-                                "base": 4510897.16,
-                                "base_original": 4510897.164,
-                                "cuota": 63152.56,
-                                "cuota_original": 63152.56,
-                                "impuesto": "IVAVENTARE14"
-                            }
-                        ],
+                        "tax_summary": [{
+                            "base": 4510897.16,
+                            "base_original": 4510897.164,
+                            "cuota": 63152.56,
+                            "cuota_original": 63152.56,
+                            "impuesto": "IVAVENTARE14"
+                        }],
                         "name": "Factura 1",
                         "tipo": "venta",
                         "fecha": "12-05-2017",
@@ -3434,7 +3452,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "cuota_original_currency": "EUR",
                         "cuota_original": 10.5,
                         "notas": "",
-                        "estado": "pendiente"
+                        "estado": "pendiente",
+                        "pendiente": 15842.0
                     },
                     "relationships": {
                         "asiento": {
@@ -3453,6 +3472,12 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "data": {
                                 "type": "partner",
                                 "id": "280941"
+                            }
+                        },
+                        "cuenta_tercero": {
+                            "data": {
+                                "type": "account",
+                                "id": "297875"
                             }
                         },
                         "ejercicio": {
@@ -3503,15 +3528,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224108",
                     "attributes": {
                         "currency": "EUR",
-                        "taxsummary": [
-                            {
-                                "base": 4510897.16,
-                                "base_original": 4510897.164,
-                                "cuota": 63152.56,
-                                "cuota_original": 63152.56,
-                                "impuesto": "IVAVENTARE14"
-                            }
-                        ],
+                        "tax_summary": [{
+                            "base": 4510897.16,
+                            "base_original": 4510897.164,
+                            "cuota": 63152.56,
+                            "cuota_original": 63152.56,
+                            "impuesto": "IVAVENTARE14"
+                        }],
                         "name": "Factura 1",
                         "tipo": "venta",
                         "fecha": "12-05-2017",
@@ -3530,7 +3553,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "cuota_original_currency": "EUR",
                         "cuota_original": 10.5,
                         "notas": "",
-                        "estado": "borrador"
+                        "estado": "borrador",
+                        "pendiente": 15842.0
                     },
                     "relationships": {
                         "asiento": {
@@ -3546,6 +3570,12 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "data": {
                                 "type": "partner",
                                 "id": "280941"
+                            }
+                        },
+                        "cuenta_tercero": {
+                            "data": {
+                                "type": "account",
+                                "id": "297875"
                             }
                         },
                         "ejercicio": {
@@ -3598,15 +3628,13 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "id": "224109",
                     "attributes": {
                         "currency": "EUR",
-                        "taxsummary": [
-                            {
-                                "base": 4510897.16,
-                                "base_original": 4510897.164,
-                                "cuota": 63152.56,
-                                "cuota_original": 63152.56,
-                                "impuesto": "IVAVENTARE14"
-                            }
-                        ],
+                        "tax_summary": [{
+                            "base": 4510897.16,
+                            "base_original": 4510897.164,
+                            "cuota": 63152.56,
+                            "cuota_original": 63152.56,
+                            "impuesto": "IVAVENTARE14"
+                        }],
                         "name": "Factura 1 Rectificada",
                         "tipo": "venta",
                         "fecha": "12-05-2017",
@@ -3625,7 +3653,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "cuota_original_currency": "EUR",
                         "cuota_original": 10.5,
                         "notas": "",
-                        "estado": "borrador"
+                        "estado": "borrador",
+                        "pendiente": 15842.0
                     },
                     "relationships": {
                         "asiento": {
@@ -3644,6 +3673,12 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                             "data": {
                                 "type": "partner",
                                 "id": "280941"
+                            }
+                        },
+                        "cuenta_tercero": {
+                            "data": {
+                                "type": "account",
+                                "id": "297875"
                             }
                         },
                         "ejercicio": {
@@ -4544,11 +4579,168 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 + Response 204
 
+# Group Countries
+**TO-DO** Descripció Country API
+
+# Countries [/countries{?page,page_size,ordering}]
+**TO-DO** Descripció Countries
+
++ Attributes (Country)
+
+## List [GET]
+    
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": [
+                        {
+                            "type": "country",
+                            "id": "AW",
+                            "attributes": {
+                                "name": "Aruba",
+                                "code": "AW"
+                            }
+                        },
+                        {
+                            "type": "country",
+                            "id": "AF",
+                            "attributes": {
+                                "name": "Afghanistan",
+                                "code": "AF"
+                            }
+                        }
+                    ]
+                }
+ 
+## Retrive [GET /countries/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this country
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "country",
+                    "id": "ES",
+                    "attributes": {
+                        "name": "Spain",
+                        "code": "ES"
+                    }
+                }
+            }
+
+
+# Provinces [/countries/{country_id}/provinces{?page,page_size,ordering}]
+**TO-DO** Descripció Provinces
+
++ Parameters
+    + country_id (required, number) ... A unique integer value identifying this province parent
+    
++ Attributes (Province)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": [
+                        {
+                            "type": "province",
+                            "id": "ES-OR",
+                            "attributes": {
+                                "name": "Ourense",
+                                "code": "ES-OR"
+                            }
+                        },
+                        {
+                            "type": "province",
+                            "id": "ES-J",
+                            "attributes": {
+                                "name": "Jaén",
+                                "code": "ES-J"
+                            }
+                        },
+                        {
+                            "type": "province",
+                            "id": "ES-AL",
+                            "attributes": {
+                                "name": "Almería",
+                                "code": "ES-AL"
+                            }
+                        }
+                    ]
+                }
+                
+
+# Towns [/countries/{country_id}/towns{?page,page_size,postal_code,ordering}]
+**TO-DO** Descripció Towns
+
++ Parameters
+    + country_id (required, number) ... A unique integer value identifying this town parent
+    
++ Attributes (Town)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+
+    + postal_code (optional) ... Filter towns by postal code
+    
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "data": [
+                        {
+                            "type": "towns",
+                            "id": "Cardedal",
+                            "attributes": {
+                                "name": "Cardedal",
+                                "code": "AV"
+                            }
+                        }
+                    ]
+                }
+
 
 # Group Partners
 **TO-DO** Descripció Partners API
 
-# Partners [/partners{?page,page_size,integration_key,integration_value,name,nif,email,telefono,search,ordering}]
+# Partners [/partners{?page,page_size,integration_key,integration_value,name,nif,email,telefono,cliente,proveedor,search,ordering,with_account}]
 **TO-DO** Descripció Partners
 
 + Attributes (Partner)
@@ -4569,7 +4761,9 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
     + email (optional) ... Filter by *email* field using equal comparison.
 
-    + telefono (optional) ... Filter by *telefono* field using equal comparison.
+    + cliente (boolean, optional) ... Filter by *cliente* field using equal comparison.
+    
+    + proveedor (boolean, optional) ... Filter by *proveedor* field using equal comparison.
 
     + search (optional) ... A search term.
 
@@ -4613,12 +4807,29 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                                 "tipo_juridica": null,
                                 "notas": "",
                                 "id_besepa": "",
+                                "logo": null,
+                                "saldo_pendiente": 0.0
                             },
                             "relationships": {
-                                "posicion": {
-                                    "data": null
+                                "analytical_lines": {
+                                    "meta": {
+                                        "count": 0
+                                    },
+                                    "data": []
                                 },
-                                "logo": {
+                                "cuenta_deudor": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "483"
+                                    }
+                                },
+                                "cuenta_acreedor": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "471"
+                                    }
+                                },
+                                "posicion": {
                                     "data": null
                                 }
                             }
@@ -4628,6 +4839,10 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## Create [POST]
 
++ Parameters
+    + with_account (boolean, optional) ... Indicates if an account must be created for this partner otherwise default account is assigned
+        + Default: false
+            
 + Request (application/vnd.api+json)
     + Headers
 
@@ -4670,25 +4885,31 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "persona_juridica": false,
                         "tipo_juridica": null,
                         "notas": "",
-                        "id_besepa": ""
+                        "id_besepa": "",
+                        "logo": null,
+                        "saldo_pendiente": 0.0
                     },
                     "relationships": {
+                        "analytical_lines": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        },
+                        "cuenta_deudor": {
+                            "data": {
+                                "type": "account",
+                                "id": "483"
+                            }
+                        },
+                        "cuenta_acreedor": {
+                            "data": {
+                                "type": "account",
+                                "id": "471"
+                            }
+                        },
                         "posicion": {
                             "data": null
-                        },
-                        "logo": {
-                            "data": null
-                        },
-                        "cuentas_contables": {
-                            "meta": {
-                                "count": 1
-                            },
-                            "data": [
-                                {
-                                    "type": "account",
-                                    "id": "408634"
-                                }
-                            ]
                         }
                     }
                 }
@@ -4729,26 +4950,33 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "persona_juridica": false,
                         "tipo_juridica": null,
                         "notas": "",
-                        "id_besepa": ""
+                        "id_besepa": "",
+                        "logo": null,
+                        "saldo_pendiente": 0.0
                     },
                     "relationships": {
+                        "analytical_lines": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        },
+                        "cuenta_deudor": {
+                            "data": {
+                                "type": "account",
+                                "id": "483"
+                            }
+                        },
+                        "cuenta_acreedor": {
+                            "data": {
+                                "type": "account",
+                                "id": "471"
+                            }
+                        },
                         "posicion": {
                             "data": null
-                        },
-                        "logo": {
-                            "data": null
-                        },
-                        "cuentas_contables": {
-                            "meta": {
-                                "count": 1
-                            },
-                            "data": [
-                                {
-                                    "type": "account",
-                                    "id": "408634"
-                                }
-                            ]
                         }
+                    }
                     }
                 }
             }
@@ -4799,25 +5027,31 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "persona_juridica": false,
                         "tipo_juridica": null,
                         "notas": "",
-                        "id_besepa": ""
+                        "id_besepa": "",
+                        "logo": null,
+                        "saldo_pendiente": 0.0
                     },
                     "relationships": {
+                        "analytical_lines": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        },
+                        "cuenta_deudor": {
+                            "data": {
+                                "type": "account",
+                                "id": "483"
+                            }
+                        },
+                        "cuenta_acreedor": {
+                            "data": {
+                                "type": "account",
+                                "id": "471"
+                            }
+                        },
                         "posicion": {
                             "data": null
-                        },
-                        "logo": {
-                            "data": null
-                        },
-                        "cuentas_contables": {
-                            "meta": {
-                                "count": 1
-                            },
-                            "data": [
-                                {
-                                    "type": "account",
-                                    "id": "408634"
-                                }
-                            ]
                         }
                     }
                 }
@@ -5518,6 +5752,810 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Response 204
 
 
+# Group Taxation
+**TO-DO** Descripció Taxation API        
+
+# Taxes [/taxation/taxes{?page,page_size,tax_type,ordering}]
+**TO-DO** Descripció Taxes
+
++ Attributes (Tax)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + tax_type (optional) ... Filter by *tax* *type* field using equal comparison.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "links": {
+                        "first": "http://api.txerpa.com/v1/taxation/taxes?page=1",
+                        "last": "http://api.txerpa.com/v1/taxation/taxes?page=11",
+                        "next": "http://api.txerpa.com/v1/taxation/taxes?page=2",
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "tax",
+                            "id": "1",
+                            "attributes": {
+                                "name": "Impuesto Valor Añadido",
+                                "tipo_impositivo": "0.00",
+                                "codigo": "IVA",
+                                "criterio": "compuesto",
+                                "tax_type": "vista",
+                                "activo": true,
+                                "recc": false,
+                                "peso_general": 0,
+                                "peso": 0,
+                                "tree_id": 1
+                            },
+                            "relationships": {
+                                "cuenta": {
+                                    "data": null
+                                },
+                                "parent": {
+                                    "data": null
+                                },
+                                "impuestos_compuestos": {
+                                    "meta": {
+                                        "count": 0
+                                    },
+                                    "data": []
+                                }
+                            }
+                        }
+                    ]
+                }
+
+            
+## Retrive [GET /taxation/taxes/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this tax
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "tax",
+                    "id": "8",
+                    "attributes": {
+                        "name": "IVA 21%",
+                        "tipo_impositivo": "21.00",
+                        "codigo": "IVAVENTASE21",
+                        "criterio": "porcentaje",
+                        "tax_type": "venta",
+                        "activo": true,
+                        "recc": false,
+                        "peso_general": 4,
+                        "peso": 4,
+                        "tree_id": 1
+                    },
+                    "relationships": {
+                        "cuenta": {
+                            "data": {
+                                "type": "account",
+                                "id": "7113"
+                            }
+                        },
+                        "parent": {
+                            "data": {
+                                "type": "tax",
+                                "id": "5"
+                            }
+                        },
+                        "impuestos_compuestos": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        }
+                    }
+                }
+            }
+
+# Tax Groups [/taxation/tax_groups{?page,page_size,ordering}]
+**TO-DO** Descripció Tax Groups
+
++ Attributes (Tax Group)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + ordering (optional) ... Which field to use when ordering the results.
+    
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "links": {
+                        "first": "http://api.txerpa.com/v1/taxation/tax_groups?page=1",
+                        "last": "http://api.txerpa.com/v1/taxation/tax_groups?page=2",
+                        "next": "http://api.txerpa.com/v1/taxation/tax_groups?page=2",
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "tax_group",
+                            "id": "1",
+                            "attributes": {
+                                "name": "Régimen Nacional",
+                                "descripcion": null
+                            }
+                        },
+                        {
+                            "type": "tax_group",
+                            "id": "2",
+                            "attributes": {
+                                "name": "Recargo de Equivalencia",
+                                "descripcion": null
+                            }
+                        }
+                    ]
+                }
+
+            
+## Retrive [GET /taxation/tax_groups/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this tax group
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "tax_group",
+                    "id": "1",
+                    "attributes": {
+                        "name": "Régimen Nacional",
+                        "descripcion": null
+                    }
+                }
+            }
+
+
+# Economic Activities [/taxation/economic_activities{?page,page_size,ordering}]
+**TO-DO** Descripció Economic Activities
+
++ Attributes (Economic Activity)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+                {
+                    "links": {
+                        "first": "http://api.txerpa.com/v1/taxation/economic_activities?page=1",
+                        "last": "http://api.txerpa.com/v1/taxation/economic_activities?page=1",
+                        "next": null,
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "economic_activity",
+                            "id": "1",
+                            "attributes": {
+                                "name": "Actividad Principal",
+                                "epigrafe": null,
+                                "asunto_correo": "Envío factura",
+                                "contenido_correo": "Adjunto le envío la factura por las compras realizadas. \n\n Atentamente",
+                                "activa": true
+                            },
+                            "relationships": {
+                                "serie_ventas": {
+                                    "data": {
+                                        "type": "billing_serie",
+                                        "id": "1"
+                                    }
+                                },
+                                "serie_compras": {
+                                    "data": {
+                                        "type": "billing_serie",
+                                        "id": "3"
+                                    }
+                                },
+                                "serie_rectificativa_ventas": {
+                                    "data": {
+                                        "type": "billing_serie",
+                                        "id": "2"
+                                    }
+                                },
+                                "serie_rectificativa_compras": {
+                                    "data": {
+                                        "type": "billing_serie",
+                                        "id": "4"
+                                    }
+                                },
+                                "libro": {
+                                    "data": {
+                                        "type": "journal",
+                                        "id": "1"
+                                    }
+                                },
+                                "cuenta_clientes": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "519"
+                                    }
+                                },
+                                "cuenta_acreedores": {
+                                    "data": {
+                                        "type": "account",
+                                        "id": "507"
+                                    }
+                                },
+                                "posicion_fiscal": {
+                                    "data": null
+                                },
+                                "tax_ventas": {
+                                    "meta": {
+                                        "count": 0
+                                    },
+                                    "data": []
+                                },
+                                "tax_compras": {
+                                    "meta": {
+                                        "count": 0
+                                    },
+                                    "data": []
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "economic_activity",
+                    "attributes": {
+                        "name": "Actividad Secundaria",
+                        "asunto_correo": "Envío factura",
+                        "contenido_correo": "Adjunto le envío la factura por las compras realizadas. \n\n Atentamente"
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)          
+    + Body
+    
+            {
+                "data": {
+                    "type": "economic_activity",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Actividad Secundaria",
+                        "epigrafe": null,
+                        "asunto_correo": "Envío factura",
+                        "contenido_correo": "Adjunto le envío la factura por las compras realizadas. \n\n Atentamente",
+                        "activa": true
+                    },
+                    "relationships": {
+                        "serie_compras": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "45"
+                            }
+                        },
+                        "serie_rectificativa_compras": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "48"
+                            }
+                        },
+                        "serie_rectificativa_ventas": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "46"
+                            }
+                        },
+                        "serie_ventas": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "47"
+                            }
+                        },
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "5"
+                            }
+                        },
+                        "cuenta_clientes": {
+                            "data": null
+                        },
+                        "cuenta_acreedores": {
+                            "data": null
+                        },
+                        "posicion_fiscal": {
+                            "data": null
+                        },
+                        "tax_ventas": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        },
+                        "tax_compras": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        }
+                    }
+                }
+            }
+            
+## Retrive [GET /taxation/economic_activities/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this economic activity
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "economic_activity",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Actividad Secundaria",
+                        "epigrafe": null,
+                        "asunto_correo": "Envío factura",
+                        "contenido_correo": "Adjunto le envío la factura por las compras realizadas. \n\n Atentamente",
+                        "activa": true
+                    },
+                    "relationships": {
+                        "serie_compras": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "45"
+                            }
+                        },
+                        "serie_rectificativa_compras": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "48"
+                            }
+                        },
+                        "serie_rectificativa_ventas": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "46"
+                            }
+                        },
+                        "serie_ventas": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "47"
+                            }
+                        },
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "5"
+                            }
+                        },
+                        "cuenta_clientes": {
+                            "data": null
+                        },
+                        "cuenta_acreedores": {
+                            "data": null
+                        },
+                        "posicion_fiscal": {
+                            "data": null
+                        },
+                        "tax_ventas": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        },
+                        "tax_compras": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /taxation/economic_activities/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this economic activity
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "economic_activity",
+                    "id": "2",
+                    "attributes": {
+                        "epigrafe": "041.2"
+                    }
+                }
+            }
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "economic_activity",
+                    "id": "2",
+                    "attributes": {
+                        "name": "Actividad Secundaria",
+                        "epigrafe": "041.2",
+                        "asunto_correo": "Envío factura",
+                        "contenido_correo": "Adjunto le envío la factura por las compras realizadas. \n\n Atentamente",
+                        "activa": true
+                    },
+                    "relationships": {
+                        "serie_compras": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "45"
+                            }
+                        },
+                        "serie_rectificativa_compras": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "48"
+                            }
+                        },
+                        "serie_rectificativa_ventas": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "46"
+                            }
+                        },
+                        "serie_ventas": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "47"
+                            }
+                        },
+                        "libro": {
+                            "data": {
+                                "type": "journal",
+                                "id": "5"
+                            }
+                        },
+                        "cuenta_clientes": {
+                            "data": null
+                        },
+                        "cuenta_acreedores": {
+                            "data": null
+                        },
+                        "posicion_fiscal": {
+                            "data": null
+                        },
+                        "tax_ventas": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        },
+                        "tax_compras": {
+                            "meta": {
+                                "count": 0
+                            },
+                            "data": []
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /taxation/economic_activities/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this economic activity
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
+# Proratas [/taxation/proratas{?page,page_size,ordering}]
+**TO-DO** Descripció Proratas
+
++ Attributes (Prorata)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+        
+                {
+                    "links": {
+                        "first": "http://api.txerpa.dev:2000/v1/taxation/proratas?page=1",
+                        "last": "http://api.txerpa.dev:2000/v1/taxation/proratas?page=1",
+                        "next": null,
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "prorata",
+                            "id": "2",
+                            "attributes": {
+                                "porcentaje": "67.00",
+                                "descripcion": null
+                            },
+                            "relationships": {
+                                "actividad": {
+                                    "data": {
+                                        "type": "economic_activity",
+                                        "id": "1"
+                                    }
+                                },
+                                "ejercicio": {
+                                    "data": {
+                                        "type": "fiscal_year",
+                                        "id": "2"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "prorata",
+                    "attributes": {
+                        "porcentaje": "67"
+                    },
+                    "relationships": {
+                        "actividad": {
+                            "data": {
+                                "type": "economic_activity",
+                                "id": "1"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        }
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)          
+    + Body
+    
+            {
+                "data": {
+                    "type": "prorata",
+                    "id": "2",
+                    "attributes": {
+                        "porcentaje": "67.00",
+                        "descripcion": null
+                    },
+                    "relationships": {
+                        "actividad": {
+                            "data": {
+                                "type": "economic_activity",
+                                "id": "1"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        }
+                    }
+                }
+            }
+            
+## Retrive [GET /taxation/proratas/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this prorata
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "prorata",
+                    "id": "2",
+                    "attributes": {
+                        "porcentaje": "67.00",
+                        "descripcion": null
+                    },
+                    "relationships": {
+                        "actividad": {
+                            "data": {
+                                "type": "economic_activity",
+                                "id": "1"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Update [PATCH /taxation/proratas/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this prorata
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "prorata",
+                    "id": "2",
+                    "attributes": {
+                        "porcentaje": "67.50"
+                    }
+                }
+            }
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "prorata",
+                    "id": "2",
+                    "attributes": {
+                        "porcentaje": "67.50",
+                        "descripcion": null
+                    },
+                    "relationships": {
+                        "actividad": {
+                            "data": {
+                                "type": "economic_activity",
+                                "id": "1"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Delete [DELETE /taxation/proratas/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this prorata
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
+
 
 # Data Structures
 
@@ -5665,7 +6703,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + analytical_account (object, required) - Analytical Account relation object
 
 ## Invoice
-+ amount - **Maximum length: 120**
++ name - **Maximum length: 120**
 + tipo (enum[string])
     + Members
         + `venta`
@@ -5695,20 +6733,22 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         + `borrador`
         + `asentado`
 + serie (object, required) - Billing Serie relation object
-+ tercero (object) - Partner relation object
++ tercero (object, required) - Partner relation object
++ cuenta_tercero (object) - Account relation object
 + ejercicio (object) - Fiscal Year relation object
 + periodo (object) - Accounting Period relation object
 + posicion_fiscal (object) - Tax Group relation object
 + original (object) - Invoice relation object
 + asiento (object) - Entry relation object
 + metodo_pago (object) - Transaction Type relation object
-+ taxsummary (array[taxsummary]) - Invoice Tax summary
++ tax summary (array[Tax Summary]) - **Read only**
++ pendiente (string) - **Read only**, **Format: `decimal`**
 
-## taxsummary (object)
-+ base (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
-+ base_original (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
-+ cuota (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
-+ cuota_original (number) - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
+## Tax Summary (object)
++ base - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ base_original - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ cuota - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
++ cuota_original - **Format: `decimal`**, **Maximum length: 18**, **Decimal places: 6**
 + impuesto - Tax code
 
 ## Invoice Line
@@ -5740,7 +6780,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         + `venta`
         + `compra`
         + `r_venta`
-        + `r_compra`
+        + `r_compra`,
+                        "pendiente": 15842.0
 + prefijo - **Maximum length: 8**
 + sufijo - **Maximum length: 8**
 + relleno (number)
@@ -5776,7 +6817,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + id_besepa - **Maximum length: 50**
     + Default: ""
 + analytical_lines (array[object]) - Analytical Line relation object
-+ cuentas_contables (array[object]) - Account relation object
++ cuenta_deudor (object) - Account relation object
++ cuenta_acreedor (object) - Account relation object
 
 ## Partner Integration (object)
 + integration (required) - **Maximum length: 80**
@@ -5804,5 +6846,62 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 ## Backup (object)
 + schema_name (required) - **Write Only**, **Unique**, **Maximum length: 63**
 + name - **Read Only**
+
+## Country (object)
++ name
++ code
+
+## Province (object)
++ name
++ code
+
+## Town (object)
++ name
++ town_code
+
+## Tax (object)
++ name
++ tipo_impositivo - **Format: decimal**
++ codigo
++ criterio
++ tax_type
++ activo (boolean)
++ recc (boolean)
++ peso_general (number)
++ peso (number)
++ tree_id (number)
++ cuenta (object, required) - Account relation object
++ parent (object) - Tax relation object
++ impuestos_compuestos (array[object]) - Tax relation object
+
+## Tax Group (object)
++ name
++ description
+
+## Economic Activity (object)
++ name (required)) - **Maximum length: 120**
++ epigrafe - **Maximum length: 6**
++ asunto_correo - **Maximum length: 256**
+    + Default: ""
++ contenido_correo
+    + Default: ""
++ activa (boolean)
+    - Default: true
++ serie_compras (object) - **Read Only**, **Format: Billing Serie relation object**
++ serie_rectificativa_compras (object) - **Read Only**, **Format: Billing Serie relation object**
++ serie_ventas (object) - **Read Only**, **Format: Billing Serie relation object**
++ serie_rectificativa_ventas (object) - **Read Only**, **Format: Billing Serie relation object**
++ libro (object) - **Format: Journal relation object**
++ cuenta_clientes (object) - **Format: Account relation object**
++ cuenta_acreedores (object) - **Format: Account relation object**
++ posicion_fiscal (object) - **Format: Tax Group relation object**
++ tax_ventas (array[object]) - **Format: Tax relation object**
++ tax_compras (array[object]) - **Format: Tax relation object**
+
+## Prorata (object)
++ porcentaje (required) - **Format: decimal**
++ descripcion
++ actividad (required) - **Format: Economic Activity relation object**
++ ejercicio (required) - **Format: Fiscal Year relation object**
 
 ## Transaction (object)
