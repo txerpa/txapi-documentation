@@ -6731,7 +6731,11 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + estado (enum[string]) - **Read only**
     + Members
         + `borrador`
-        + `asentado`
+        + `presupuesto`
+        + `pendiente`
+        + `pagada`
+        + `pagada_parcialmente`
+        + `rectificada`
 + serie (object, required) - Billing Serie relation object
 + tercero (object, required) - Partner relation object
 + cuenta_tercero (object) - Account relation object
