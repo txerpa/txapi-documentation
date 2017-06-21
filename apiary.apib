@@ -3605,6 +3605,125 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     }
                 }
             }
+
+## Conciliate Invoice [POST /billing/invoices/{id}/transactions]
+
++ Attributes (Conciliation)
+
++ Parameters
+    + id (number, required) ... A unique integer value identifying this invoice
+    
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice_transaction",
+                    "relationships": {
+                        "transaction_method": {
+                            "data": {
+                                "type": "transaction_method",
+                                "id": "1"
+                            }
+                        }
+                    }
+                }
+            }
+    
++ Response 201 (application/vnd.api+json)
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice",
+                    "id": "224108",
+                    "attributes": {
+                        "currency": "EUR",
+                        "tax_summary": [{
+                            "base": 4510897.16,
+                            "base_original": 4510897.164,
+                            "cuota": 63152.56,
+                            "cuota_original": 63152.56,
+                            "impuesto": "IVAVENTARE14"
+                        }],
+                        "name": "Factura 1",
+                        "tipo": "venta",
+                        "fecha": "12-05-2017",
+                        "numero_str": "W17/095157",
+                        "numero": 95157,
+                        "numero_proveedor": null,
+                        "direccion_receptor": "",
+                        "direccion_emisor": "",
+                        "descripcion": "",
+                        "base_currency": "EUR",
+                        "base": 50.0,
+                        "base_original_currency": "EUR",
+                        "base_original": 50.0,
+                        "cuota_currency": "EUR",
+                        "cuota": 10.5,
+                        "cuota_original_currency": "EUR",
+                        "cuota_original": 10.5,
+                        "notas": "",
+                        "estado": "pendiente",
+                        "pendiente": 15842.0
+                    },
+                    "relationships": {
+                        "asiento": {
+                            "data": {
+                                "type": "entry",
+                                "id": "172783"
+                            }
+                        },
+                        "serie": {
+                            "data": {
+                                "type": "billing_serie",
+                                "id": "12"
+                            }
+                        },
+                        "tercero": {
+                            "data": {
+                                "type": "partner",
+                                "id": "280941"
+                            }
+                        },
+                        "cuenta_tercero": {
+                            "data": {
+                                "type": "account",
+                                "id": "297875"
+                            }
+                        },
+                        "ejercicio": {
+                            "data": {
+                                "type": "fiscal_year",
+                                "id": "2"
+                            }
+                        },
+                        "periodo": {
+                            "data": {
+                                "type": "accounting_period",
+                                "id": "19"
+                            }
+                        },
+                        "posicion_fiscal": {
+                            "data": {
+                                "type": "tax_group",
+                                "id": "1"
+                            }
+                        },
+                        "original": {
+                            "data": null
+                        },
+                        "metodo_pago": {
+                            "data": null
+                        }
+                    }
+                }
+            }
             
 ## Rectify Invoice [POST /billing/invoices/{id}/rectifications{?date}]
 
@@ -3653,7 +3772,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "cuota_original_currency": "EUR",
                         "cuota_original": 10.5,
                         "notas": "",
-                        "estado": "borrador",
+                        "estado": "rectificada",
                         "pendiente": 15842.0
                     },
                     "relationships": {
@@ -4139,11 +4258,11 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 + Response 204
 
-# Invoice Transactions [/billing/invoices/{invoice_id}/transactions{?page,page_size,search,ordering}]
-**TO-DO** Descripció Transactions
+# Invoice Payments [/billing/invoices/{invoice_id}/payments{?page,page_size,search,ordering}]
+**TO-DO** Descripció Payments
 
 + Parameters
-    + invoice_id (required, number) ... A unique integer value identifying this invoice transaction parent
+    + invoice_id (required, number) ... A unique integer value identifying the invoice
     
 + Attributes (Transaction)
 
@@ -4167,8 +4286,8 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     
                 {
                     "links": {
-                        "first": "https://api.txerpa.com/v1/billing/invoices/223472/transactions?page=1",
-                        "last": "https://api.txerpa.com/v1/billing/invoices/223472/transactions?page=1",
+                        "first": "https://api.txerpa.com/v1/billing/invoices/223472/payments?page=1",
+                        "last": "https://api.txerpa.com/v1/billing/invoices/223472/payments?page=1",
                         "next": null,
                         "prev": null
                     },
@@ -4370,7 +4489,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
             }
  
  
-# Billing Series [/accounting/billing_series{?page,page_size,name,tipo,ordering}]
+# Billing Series [/billing/billing_series{?page,page_size,name,tipo,ordering}]
 **TO-DO** Descripció Billing Series
 
 + Attributes (Billing Serie)
@@ -4485,7 +4604,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                 }
             }
 
-## Retrive [GET /accounting/billing_series/{id}]
+## Retrive [GET /billing/billing_series/{id}]
 
 + Parameters
     + id (number) ... A unique integer value identifying this billing serie
@@ -4520,7 +4639,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                 }
             }
 
-## Update [PATCH /accounting/billing_series/{id}]
+## Update [PATCH /billing/billing_series/{id}]
 
 + Parameters
     + id (number) ... A unique integer value identifying this billing serie
@@ -4567,7 +4686,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                 }
             }
 
-## Delete [DELETE /accounting/billing_series/{id}]
+## Delete [DELETE /billing/billing_series/{id}]
 
 + Parameters
     + id (number) ... A unique integer value identifying this billing serie
@@ -5068,6 +5187,109 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
             Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
 
 + Response 204
+
+## Pending invoices [GET /partners/{id}/pending_invoices{?type}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this partner
+    
+    + type (string, required) ... The type of invoices `in` or `out` for sales and purchases respectively
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "type": "invoice",
+                        "id": "711",
+                        "attributes": {
+                            "currency": "EUR",
+                            "pendiente": 60.5,
+                            "tax_summary": [
+                                {
+                                    "base": 50.0,
+                                    "base_original": 50.0,
+                                    "cuota": 10.5,
+                                    "cuota_original": 10.5,
+                                    "impuesto": "IVAVENTASE21"
+                                }
+                            ],
+                            "name": "Factura 1",
+                            "tipo": "venta",
+                            "fecha": "19-06-2017",
+                            "numero_str": "0001",
+                            "numero": 1,
+                            "numero_proveedor": null,
+                            "direccion_receptor": "Txerpa GE departamento de nuevos servicios slp\nPaseo Mallorca 17c bajos\nNone,Palma de Mallorca\nNone\nNone\ninfo@txerpa.com",
+                            "direccion_emisor": "Test Demo\n\nNone,None\nNone\nNone\ntest@txerpa.com",
+                            "descripcion": "",
+                            "base_currency": "EUR",
+                            "base": 50.0,
+                            "base_original_currency": "EUR",
+                            "base_original": 50.0,
+                            "cuota_currency": "EUR",
+                            "cuota": 10.5,
+                            "cuota_original_currency": "EUR",
+                            "cuota_original": 10.5,
+                            "notas": "",
+                            "estado": "pendiente"
+                        },
+                        "relationships": {
+                            "asiento": {
+                                "data": {
+                                    "type": "entry",
+                                    "id": "2"
+                                }
+                            },
+                            "serie": {
+                                "data": {
+                                    "type": "billing_serie",
+                                    "id": "12"
+                                }
+                            },
+                            "tercero": {
+                                "data": {
+                                    "type": "partner",
+                                    "id": "2"
+                                }
+                            },
+                            "cuenta_tercero": {
+                                "data": {
+                                    "type": "account",
+                                    "id": "519"
+                                }
+                            },
+                            "ejercicio": {
+                                "data": {
+                                    "type": "fiscal_year",
+                                    "id": "2"
+                                }
+                            },
+                            "periodo": {
+                                "data": {
+                                    "type": "accounting_period",
+                                    "id": "8"
+                                }
+                            },
+                            "posicion_fiscal": {
+                                "data": null
+                            },
+                            "original": {
+                                "data": null
+                            },
+                            "metodo_pago": {
+                                "data": null
+                            }
+                        }
+                    }
+                ]
+            }
 
 # Partner Integrations [/partners/{partner_id}/integrations{?page,page_size,search,ordering}]
 **TO-DO** Descripció Integrations
@@ -6556,6 +6778,207 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + Response 204
 
 
+# Group SII
+**TO-DO** Descripció Analytical Accounting API
+
+# VAT Dispatchs [/sii/vat_dispatch{?page,page_size,}]
+
+**TO-DO** Descripció VAT Dispatchs
+
++ Attributes (VAT Dispatch)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+    
+    + page_size (number, optional) ... Number of results to return per page.
+        
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "links": {
+                    "first": "https://api.txerpa.com/v1/sii/vat_dispatch?page=1",
+                    "last": "https://api.txerpa.com/v1/sii/vat_dispatch?page=1",
+                    "next": null,
+                    "prev": null
+                },
+                "data": [
+                    {
+                        "type": "vat_dispatch",
+                        "id": "25",
+                        "attributes": {
+                            "csv": "YZ7FW5X8T4PLCQ9E",
+                            "state": "01",
+                            "response": "{\"Envelope\": {\"Body\": {\"@Id\": \"Body\", \"RespuestaLRFacturasEmitidas\": {\"Cabecera\": {\"IDVersionSii\": \"0.7\", \"TipoComunicacion\": \"A0\", \"Titular\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}}, \"DatosPresentacion\": {\"TimestampPresentacion\": \"21-06-2017 12:33:49\", \"NIFPresentador\": \"43247561J\"}, \"CSV\": \"YZ7FW5X8T4PLCQ9E\", \"EstadoEnvio\": \"Correcto\", \"RespuestaLinea\": {\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"EstadoRegistro\": \"Correcto\"}}}, \"Header\": null}}",
+                            "error_description": null
+                        }
+                    },
+                    {
+                        "type": "vat_dispatch",
+                        "id": "28",
+                        "attributes": {
+                            "csv": "9BKUTQ2Y4XHFLB5G",
+                            "state": "01",
+                            "response": "{\"Envelope\": {\"Body\": {\"@Id\": \"Body\", \"RespuestaLRFacturasRecibidas\": {\"Cabecera\": {\"IDVersionSii\": \"0.7\", \"TipoComunicacion\": \"A0\", \"Titular\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}}, \"DatosPresentacion\": {\"TimestampPresentacion\": \"21-06-2017 12:33:51\", \"NIFPresentador\": \"43247561J\"}, \"CSV\": \"9BKUTQ2Y4XHFLB5G\", \"EstadoEnvio\": \"Correcto\", \"RespuestaLinea\": {\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NIF\": \"A07125856\"}, \"NumSerieFacturaEmisor\": \"1564\"}, \"EstadoRegistro\": \"Correcto\"}}}, \"Header\": null}}",
+                            "error_description": null
+                        }
+                    }
+                ],
+                "meta": {
+                    "pagination": {
+                        "page": 1,
+                        "pages": 1,
+                        "count": 6
+                    }
+                }
+            }
+
+
+## Retrive [GET /sii/vat_dispatch/{id}]
+
++ Parameters
+    + id (required, number) ... A unique integer value identifying this vat dispatch
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "type": "vat_dispatch",
+                "id": "25",
+                "attributes": {
+                    "csv": "YZ7FW5X8T4PLCQ9E",
+                    "state": "01",
+                    "response": "{\"Envelope\": {\"Body\": {\"@Id\": \"Body\", \"RespuestaLRFacturasEmitidas\": {\"Cabecera\": {\"IDVersionSii\": \"0.7\", \"TipoComunicacion\": \"A0\", \"Titular\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}}, \"DatosPresentacion\": {\"TimestampPresentacion\": \"21-06-2017 12:33:49\", \"NIFPresentador\": \"43247561J\"}, \"CSV\": \"YZ7FW5X8T4PLCQ9E\", \"EstadoEnvio\": \"Correcto\", \"RespuestaLinea\": {\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"EstadoRegistro\": \"Correcto\"}}}, \"Header\": null}}",
+                    "error_description": null
+                }
+            }
+
+# VAT Dispatch Records [/sii/vat_dispatch/{vat_dispatch_id}/invoice_records{?page,page_size,}]
+
+**TO-DO** Descripció VAT Dispatch records
+
++ Attributes (Invoice VAT Dispatch Record)
+
+## List [GET]
++ Parameters
+    + vat_dispatch_id (requires) ... A vat_dispatch identifier
+    
+    + page (number, optional) ... A page number within the paginated result set.
+    
+    + page_size (number, optional) ... Number of results to return per page.
+        
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "links": {
+                    "first": "https://api.txerpa.com/v1/sii/vat_dispatch/1/invoice_records?page=1",
+                    "last": "https://api.txerpa.com/v1/sii/vat_dispatch/1/invoice_records?page=1",
+                    "next": null,
+                    "prev": null
+                },
+                "data": [
+                    "type": "invoice_vat_dispatch_record",
+                    "id": "2",
+                    "attributes": {
+                        "changed": false,
+                        "state": "01",
+                        "json": "{\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"FacturaExpedida\": {\"ClaveRegimenEspecialOTrascendencia\": \"01\", \"ImporteTotal\": \"60.50\", \"TipoDesglose\": {\"DesgloseFactura\": {\"Sujeta\": {\"NoExenta\": {\"TipoNoExenta\": \"S1\", \"DesgloseIVA\": [{\"DetalleIVA\": {\"BaseImponible\": \"50.00\", \"CuotaRepercutida\": \"10.50\", \"CuotaRecargoEquivalencia\": null, \"TipoRecargoEquivalencia\": null, \"TipoImpositivo\": \"21.00\"}}]}}}}, \"TipoFactura\": \"F1\", \"TipoRectificativa\": \"\", \"DescripcionOperacion\": \"W17/050707\", \"Contraparte\": {\"NombreRazon\": \"poliurmadrid 2010 s.l.\", \"NIF\": \"B68104276\"}}, \"PeriodoImpositivo\": {\"Periodo\": \"02\", \"Ejercicio\": 2017}}",
+                        "error_description": null,
+                        "error_code": null,
+                        "rectified": false,
+                        "identification": null,
+                        "type": "01"
+                    },
+                    "relationships": {
+                        "invoice": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "275524"
+                            }
+                        },
+                        "batch": {
+                            "data": {
+                                "type": "vat_dispatch",
+                                "id": "25"
+                            }
+                        }
+                    }
+                }
+            ],
+            "meta": {
+                "pagination": {
+                    "page": 1,
+                    "pages": 1,
+                    "count": 1
+                }
+            }
+        }
+
+
+## Retrive [GET /sii/vat_dispatch/{vat_dispatch_id}/invoice_records/{id}]
+
++ Parameters
+    + vat_dispatch_id (requires) ... A vat_dispatch identifier
+
+    + id (required, number) ... A unique integer value identifying this invoice vat dispatch record
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice_vat_dispatch_record",
+                    "id": "2",
+                    "attributes": {
+                        "changed": false,
+                        "state": "01",
+                        "json": "{\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"FacturaExpedida\": {\"ClaveRegimenEspecialOTrascendencia\": \"01\", \"ImporteTotal\": \"60.50\", \"TipoDesglose\": {\"DesgloseFactura\": {\"Sujeta\": {\"NoExenta\": {\"TipoNoExenta\": \"S1\", \"DesgloseIVA\": [{\"DetalleIVA\": {\"BaseImponible\": \"50.00\", \"CuotaRepercutida\": \"10.50\", \"CuotaRecargoEquivalencia\": null, \"TipoRecargoEquivalencia\": null, \"TipoImpositivo\": \"21.00\"}}]}}}}, \"TipoFactura\": \"F1\", \"TipoRectificativa\": \"\", \"DescripcionOperacion\": \"W17/050707\", \"Contraparte\": {\"NombreRazon\": \"poliurmadrid 2010 s.l.\", \"NIF\": \"B05226097\"}}, \"PeriodoImpositivo\": {\"Periodo\": \"02\", \"Ejercicio\": 2017}}",
+                        "error_description": null,
+                        "error_code": null,
+                        "rectified": false,
+                        "identification": null,
+                        "type": "01"
+                    },
+                    "relationships": {
+                        "invoice": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "275524"
+                            }
+                        },
+                        "batch": {
+                            "data": {
+                                "type": "vat_dispatch",
+                                "id": "25"
+                            }
+                        }
+                    }
+                }
+            }
+
+
 
 # Data Structures
 
@@ -6909,3 +7332,33 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + ejercicio (required) - **Format: Fiscal Year relation object**
 
 ## Transaction (object)
+
+## Conciliation (object)
++ transaction_method (required) - **Format: number**
++ date (optional) - **Format: date**
++ amount (optional) - **Format: decimal**
+
+## VAT Dispatch (object)
++ csv - **Format: [Código Seguro de Verificación](http://www.agenciatributaria.es/AEAT.internet/ayuda/CSV.shtml)**
++ state (enum[string])
+    + Members
+        + `01` - Correct
+        + `02` - Partially correct
+        + `03` - Error
++ response - **Format: json**
++ error_description
+
+## Invoice VAT Dispatch Record (object)
++ invoice (object) - **Format: Invoice relation object**
++ changed (boolean)
++ state (enum[string])
+    + Members
+        + `01` - Sent
+        + `02` - Pending
+        + `03` - Error
+        + `04` - Partial
++ json - **Format: json**
++ error_description
++ error_code
++ batch (object) - **Format: VAT Dispatch relation object**
++ rectified (boolean)
