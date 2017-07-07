@@ -112,7 +112,11 @@ This is what the CORS preflight request looks like:
 ```
 
 # Group Authentication
-**TO-DO** Descripció Authentication API
+Authentication in Txerpa is based in JSON Web Token (JWT), is a statless API, so a token is created
+and it allows to make petitions for a limited time (by default 300s).
+
+There's a general API where the token can be obtained, each token defines the tenant where the querys
+will be made.
 
 
 # Auth [/auth/{client_id}]
@@ -179,10 +183,21 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 
 # Group Accounting
-**TO-DO** Descripció Accounting API
+Accounting is one of the core features of Txerpa. Is a simple yet powerfull application for
+spanish business bookeeping. Is a double entry accounting, with a predefined chart of accounts
+
+There are two main models accounts and entrys. Every move is posted as a entry record wich
+references to the account and 
 
 # Accounts [/accounting/accounts{?page,page_size,tipo,active,search,ordering}]
-**TO-DO** Descripció Accounts
+An entity representing each of the accounts of a chart of accounts. The main data of the
+account are the code (codigo) and type (tipo). The type of an account automatates
+some behauvior when posting an entry on that account.
+The spanish chart of accounts is well defined and each Txerpa tenant has a chart created
+on sign up. 
+
+The length of an account code can be variable, being the minimum 6 and the max 20.
+All accounts must have the same length, wich is defined at the creation of the chart.
 
 + Attributes (Account)
 
@@ -6781,7 +6796,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 # Group SII
 **TO-DO** Descripció Analytical Accounting API
 
-# VAT Dispatchs [/sii/vat_dispatch{?page,page_size,}]
+# VAT Dispatchs [/sii/vat_dispatch{?page,page_size,search,ordering,}]
 
 **TO-DO** Descripció VAT Dispatchs
 
@@ -6792,7 +6807,11 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
     + page (number, optional) ... A page number within the paginated result set.
     
     + page_size (number, optional) ... Number of results to return per page.
-        
+    
+    + search (string, optional) ... A string to search in fields csv and error_description.
+    
+    + ordering (string, optional) ... Options: (-)created, (-)type, (-)state
+
 + Request (application/vnd.api+json)
     + Headers
 
@@ -6813,20 +6832,26 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                         "type": "vat_dispatch",
                         "id": "25",
                         "attributes": {
+                            "created": "29-06-2017 09:36:39",
+                            "modified": "29-06-2017 09:36:42",
                             "csv": "YZ7FW5X8T4PLCQ9E",
                             "state": "01",
                             "response": "{\"Envelope\": {\"Body\": {\"@Id\": \"Body\", \"RespuestaLRFacturasEmitidas\": {\"Cabecera\": {\"IDVersionSii\": \"0.7\", \"TipoComunicacion\": \"A0\", \"Titular\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}}, \"DatosPresentacion\": {\"TimestampPresentacion\": \"21-06-2017 12:33:49\", \"NIFPresentador\": \"43247561J\"}, \"CSV\": \"YZ7FW5X8T4PLCQ9E\", \"EstadoEnvio\": \"Correcto\", \"RespuestaLinea\": {\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"EstadoRegistro\": \"Correcto\"}}}, \"Header\": null}}",
-                            "error_description": null
+                            "error_description": null,
+                            "type": "02"
                         }
                     },
                     {
                         "type": "vat_dispatch",
                         "id": "28",
                         "attributes": {
+                            "created": "27-06-2017 07:03:27",
+                            "modified": "27-06-2017 07:03:29",
                             "csv": "9BKUTQ2Y4XHFLB5G",
                             "state": "01",
                             "response": "{\"Envelope\": {\"Body\": {\"@Id\": \"Body\", \"RespuestaLRFacturasRecibidas\": {\"Cabecera\": {\"IDVersionSii\": \"0.7\", \"TipoComunicacion\": \"A0\", \"Titular\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}}, \"DatosPresentacion\": {\"TimestampPresentacion\": \"21-06-2017 12:33:51\", \"NIFPresentador\": \"43247561J\"}, \"CSV\": \"9BKUTQ2Y4XHFLB5G\", \"EstadoEnvio\": \"Correcto\", \"RespuestaLinea\": {\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NIF\": \"A07125856\"}, \"NumSerieFacturaEmisor\": \"1564\"}, \"EstadoRegistro\": \"Correcto\"}}}, \"Header\": null}}",
-                            "error_description": null
+                            "error_description": null,
+                            "type": "01"
                         }
                     }
                 ],
@@ -6857,14 +6882,17 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                 "type": "vat_dispatch",
                 "id": "25",
                 "attributes": {
+                    "created": "29-06-2017 09:36:39",
+                    "modified": "29-06-2017 09:36:42",
                     "csv": "YZ7FW5X8T4PLCQ9E",
                     "state": "01",
                     "response": "{\"Envelope\": {\"Body\": {\"@Id\": \"Body\", \"RespuestaLRFacturasEmitidas\": {\"Cabecera\": {\"IDVersionSii\": \"0.7\", \"TipoComunicacion\": \"A0\", \"Titular\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}}, \"DatosPresentacion\": {\"TimestampPresentacion\": \"21-06-2017 12:33:49\", \"NIFPresentador\": \"43247561J\"}, \"CSV\": \"YZ7FW5X8T4PLCQ9E\", \"EstadoEnvio\": \"Correcto\", \"RespuestaLinea\": {\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"EstadoRegistro\": \"Correcto\"}}}, \"Header\": null}}",
-                    "error_description": null
+                    "error_description": null,
+                    "type": "02"
                 }
             }
 
-# VAT Dispatch Records [/sii/vat_dispatch/{vat_dispatch_id}/invoice_records{?page,page_size,}]
+# VAT Dispatch Records [/sii/vat_dispatch/{vat_dispatch_id}/invoice_records{?page,page_size,state,error_code,invoice,search,ordering,}]
 
 **TO-DO** Descripció VAT Dispatch records
 
@@ -6872,11 +6900,21 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 
 ## List [GET]
 + Parameters
-    + vat_dispatch_id (requires) ... A vat_dispatch identifier
+    + vat_dispatch_id (required) ... A vat_dispatch identifier
     
     + page (number, optional) ... A page number within the paginated result set.
     
     + page_size (number, optional) ... Number of results to return per page.
+    
+    + state (number, optional) ... A number identifying the state
+    
+    + error_code (string, optional) ... A string that defines the error SII gave
+    
+    + invoice (number, optional) ... A invoice id
+    
+    + search (string, optional) ... A string to search in fields csv and error_description.
+    
+    + ordering (string, optional) ... Options: (-)modified, (-)created
         
 + Request (application/vnd.api+json)
     + Headers
@@ -6894,48 +6932,50 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "prev": null
                 },
                 "data": [
-                    "type": "invoice_vat_dispatch_record",
-                    "id": "2",
-                    "attributes": {
-                        "changed": false,
-                        "state": "01",
-                        "json": "{\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"FacturaExpedida\": {\"ClaveRegimenEspecialOTrascendencia\": \"01\", \"ImporteTotal\": \"60.50\", \"TipoDesglose\": {\"DesgloseFactura\": {\"Sujeta\": {\"NoExenta\": {\"TipoNoExenta\": \"S1\", \"DesgloseIVA\": [{\"DetalleIVA\": {\"BaseImponible\": \"50.00\", \"CuotaRepercutida\": \"10.50\", \"CuotaRecargoEquivalencia\": null, \"TipoRecargoEquivalencia\": null, \"TipoImpositivo\": \"21.00\"}}]}}}}, \"TipoFactura\": \"F1\", \"TipoRectificativa\": \"\", \"DescripcionOperacion\": \"W17/050707\", \"Contraparte\": {\"NombreRazon\": \"poliurmadrid 2010 s.l.\", \"NIF\": \"B68104276\"}}, \"PeriodoImpositivo\": {\"Periodo\": \"02\", \"Ejercicio\": 2017}}",
-                        "error_description": null,
-                        "error_code": null,
-                        "rectified": false,
-                        "identification": null,
-                        "type": "01"
-                    },
-                    "relationships": {
-                        "invoice": {
-                            "data": {
-                                "type": "invoice",
-                                "id": "275524"
-                            }
+                    {
+                        "type": "invoice_vat_dispatch_record",
+                        "id": "2",
+                        "attributes": {
+                            "created": "27-06-2017 07:11:36",
+                            "modified": "27-06-2017 07:11:36",
+                            "changed": false,
+                            "state": "01",
+                            "json": "{\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"FacturaExpedida\": {\"ClaveRegimenEspecialOTrascendencia\": \"01\", \"ImporteTotal\": \"60.50\", \"TipoDesglose\": {\"DesgloseFactura\": {\"Sujeta\": {\"NoExenta\": {\"TipoNoExenta\": \"S1\", \"DesgloseIVA\": [{\"DetalleIVA\": {\"BaseImponible\": \"50.00\", \"CuotaRepercutida\": \"10.50\", \"CuotaRecargoEquivalencia\": null, \"TipoRecargoEquivalencia\": null, \"TipoImpositivo\": \"21.00\"}}]}}}}, \"TipoFactura\": \"F1\", \"TipoRectificativa\": \"\", \"DescripcionOperacion\": \"W17/050707\", \"Contraparte\": {\"NombreRazon\": \"poliurmadrid 2010 s.l.\", \"NIF\": \"B68104276\"}}, \"PeriodoImpositivo\": {\"Periodo\": \"02\", \"Ejercicio\": 2017}}",
+                            "error_description": null,
+                            "error_code": null,
+                            "rectified": false,
+                            "type": "01"
                         },
-                        "batch": {
-                            "data": {
-                                "type": "vat_dispatch",
-                                "id": "25"
+                        "relationships": {
+                            "invoice": {
+                                "data": {
+                                    "type": "invoice",
+                                    "id": "275524"
+                                }
+                            },
+                            "batch": {
+                                "data": {
+                                    "type": "vat_dispatch",
+                                    "id": "25"
+                                }
                             }
                         }
                     }
-                }
-            ],
-            "meta": {
-                "pagination": {
-                    "page": 1,
-                    "pages": 1,
-                    "count": 1
+                ],
+                "meta": {
+                    "pagination": {
+                        "page": 1,
+                        "pages": 1,
+                        "count": 1
+                    }
                 }
             }
-        }
 
 
 ## Retrive [GET /sii/vat_dispatch/{vat_dispatch_id}/invoice_records/{id}]
 
 + Parameters
-    + vat_dispatch_id (requires) ... A vat_dispatch identifier
+    + vat_dispatch_id (required) ... A vat_dispatch identifier
 
     + id (required, number) ... A unique integer value identifying this invoice vat dispatch record
 
@@ -6952,13 +6992,14 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                     "type": "invoice_vat_dispatch_record",
                     "id": "2",
                     "attributes": {
+                        "created": "27-06-2017 07:11:36",
+                        "modified": "27-06-2017 07:11:36",
                         "changed": false,
                         "state": "01",
                         "json": "{\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"FacturaExpedida\": {\"ClaveRegimenEspecialOTrascendencia\": \"01\", \"ImporteTotal\": \"60.50\", \"TipoDesglose\": {\"DesgloseFactura\": {\"Sujeta\": {\"NoExenta\": {\"TipoNoExenta\": \"S1\", \"DesgloseIVA\": [{\"DetalleIVA\": {\"BaseImponible\": \"50.00\", \"CuotaRepercutida\": \"10.50\", \"CuotaRecargoEquivalencia\": null, \"TipoRecargoEquivalencia\": null, \"TipoImpositivo\": \"21.00\"}}]}}}}, \"TipoFactura\": \"F1\", \"TipoRectificativa\": \"\", \"DescripcionOperacion\": \"W17/050707\", \"Contraparte\": {\"NombreRazon\": \"poliurmadrid 2010 s.l.\", \"NIF\": \"B05226097\"}}, \"PeriodoImpositivo\": {\"Periodo\": \"02\", \"Ejercicio\": 2017}}",
                         "error_description": null,
                         "error_code": null,
                         "rectified": false,
-                        "identification": null,
                         "type": "01"
                     },
                     "relationships": {
@@ -6978,7 +7019,129 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
                 }
             }
 
+# Invoice Records [/sii/invoice_records{?page,page_size,state,error_code,invoice,search,ordering}]
 
+**TO-DO** Descripció VAT Dispatch records
+
++ Attributes (Invoice VAT Dispatch Record)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+    
+    + page_size (number, optional) ... Number of results to return per page.
+    
+    + state (number, optional) ... A number identifying the state
+    
+    + error_code (string, optional) ... A string that defines the error SII gave
+    
+    + invoice (number, optional) ... A invoice id
+    
+    + search (string, optional) ... A string to search in fields csv and error_description.
+    
+    + ordering (string, optional) ... Options: (-)modified, (-)created
+        
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "links": {
+                    "first": "https://api.txerpa.com/v1/sii/vat_dispatch/1/invoice_records?page=1",
+                    "last": "https://api.txerpa.com/v1/sii/vat_dispatch/1/invoice_records?page=1",
+                    "next": null,
+                    "prev": null
+                },
+                "data": [
+                    {
+                        "type": "invoice_vat_dispatch_record",
+                        "id": "2",
+                        "attributes": {
+                            "created": "27-06-2017 07:11:36",
+                            "modified": "27-06-2017 07:11:36",
+                            "changed": false,
+                            "state": "01",
+                            "json": "{\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"FacturaExpedida\": {\"ClaveRegimenEspecialOTrascendencia\": \"01\", \"ImporteTotal\": \"60.50\", \"TipoDesglose\": {\"DesgloseFactura\": {\"Sujeta\": {\"NoExenta\": {\"TipoNoExenta\": \"S1\", \"DesgloseIVA\": [{\"DetalleIVA\": {\"BaseImponible\": \"50.00\", \"CuotaRepercutida\": \"10.50\", \"CuotaRecargoEquivalencia\": null, \"TipoRecargoEquivalencia\": null, \"TipoImpositivo\": \"21.00\"}}]}}}}, \"TipoFactura\": \"F1\", \"TipoRectificativa\": \"\", \"DescripcionOperacion\": \"W17/050707\", \"Contraparte\": {\"NombreRazon\": \"poliurmadrid 2010 s.l.\", \"NIF\": \"B68104276\"}}, \"PeriodoImpositivo\": {\"Periodo\": \"02\", \"Ejercicio\": 2017}}",
+                            "error_description": null,
+                            "error_code": null,
+                            "rectified": false,
+                            "type": "01"
+                        },
+                        "relationships": {
+                            "invoice": {
+                                "data": {
+                                    "type": "invoice",
+                                    "id": "275524"
+                                }
+                            },
+                            "batch": {
+                                "data": {
+                                    "type": "vat_dispatch",
+                                    "id": "25"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "meta": {
+                    "pagination": {
+                        "page": 1,
+                        "pages": 1,
+                        "count": 1
+                    }
+                }
+            }
+
+
+## Retrive [GET /sii/vat_dispatch/{vat_dispatch_id}/invoice_records/{id}]
+
++ Parameters
+
+    + id (required, number) ... A unique integer value identifying this invoice vat dispatch record
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "invoice_vat_dispatch_record",
+                    "id": "2",
+                    "attributes": {
+                        "created": "27-06-2017 07:11:36",
+                        "modified": "27-06-2017 07:11:36",
+                        "changed": false,
+                        "state": "01",
+                        "json": "{\"IDFactura\": {\"FechaExpedicionFacturaEmisor\": \"21/06/2017\", \"IDEmisorFactura\": {\"NombreRazon\": \"Mi Empresa S.L\", \"NIF\": \"B68104276\"}, \"NumSerieFacturaEmisor\": \"W17/050707\"}, \"FacturaExpedida\": {\"ClaveRegimenEspecialOTrascendencia\": \"01\", \"ImporteTotal\": \"60.50\", \"TipoDesglose\": {\"DesgloseFactura\": {\"Sujeta\": {\"NoExenta\": {\"TipoNoExenta\": \"S1\", \"DesgloseIVA\": [{\"DetalleIVA\": {\"BaseImponible\": \"50.00\", \"CuotaRepercutida\": \"10.50\", \"CuotaRecargoEquivalencia\": null, \"TipoRecargoEquivalencia\": null, \"TipoImpositivo\": \"21.00\"}}]}}}}, \"TipoFactura\": \"F1\", \"TipoRectificativa\": \"\", \"DescripcionOperacion\": \"W17/050707\", \"Contraparte\": {\"NombreRazon\": \"poliurmadrid 2010 s.l.\", \"NIF\": \"B05226097\"}}, \"PeriodoImpositivo\": {\"Periodo\": \"02\", \"Ejercicio\": 2017}}",
+                        "error_description": null,
+                        "error_code": null,
+                        "rectified": false,
+                        "type": "01"
+                    },
+                    "relationships": {
+                        "invoice": {
+                            "data": {
+                                "type": "invoice",
+                                "id": "275524"
+                            }
+                        },
+                        "batch": {
+                            "data": {
+                                "type": "vat_dispatch",
+                                "id": "25"
+                            }
+                        }
+                    }
+                }
+            }
 
 # Data Structures
 
@@ -7149,6 +7312,7 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + base_original (Money) - **Read only**
 + cuota (Money) - **Read only**
 + cuota_original (Money) - **Read only**
++ data (string) - **Format: `json`**
 + notas
     + Default: ""
 + estado (enum[string]) - **Read only**
@@ -7347,6 +7511,19 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
         + `03` - Error
 + response - **Format: json**
 + error_description
++ type (enum[string])
+    + Members
+        + `01` - Sale
+        + `02` - Sale modified
+        + `03` - Sale rectified
+        + `04` - Sale rectified modified
+        + `05` - Purchase
+        + `06` - Purchase modified
+        + `07` - Purchase rectified
+        + `08` - Purchase rectified modified
+        + `09` - Capital good
++ created - Timestamp dd-mm-yyyy hh:ii:ss
++ modified - Timestamp dd-mm-yyyy hh:ii:ss
 
 ## Invoice VAT Dispatch Record (object)
 + invoice (object) - **Format: Invoice relation object**
@@ -7362,3 +7539,9 @@ Use the `/auth` resource to create an JWT access token. You can also refresh it.
 + error_code
 + batch (object) - **Format: VAT Dispatch relation object**
 + rectified (boolean)
++ identification (number)
++ type (enum[string])
+    + Members
+        + `01` - Invoice
+        + `02` - Payment
+        + `03` - Capital good
