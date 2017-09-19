@@ -7295,6 +7295,187 @@ All accounts must have the same length, wich is defined at the creation of the c
 + Response 204
 
 
+# Group Webhooks
+ Webhooks feature allows apps to receive real-time notifications when an event occurs.     
+
+# Webhooks [/notify/webhooks{?page,page_size,ordering}]
+ To subscribe for specific event it is obligatory to define URL target and event. 
+ Once event is triggered POST payload will be sent to defined target.
+ If security key is provided every notification request will include a header signature
+
++ Attributes (Webhook)
+
+## List [GET]
++ Parameters
+    + page (number, optional) ... A page number within the paginated result set.
+
+    + page_size (number, optional) ... Number of results to return per page.
+
+    + ordering (optional) ... Which field to use when ordering the results.
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+        
+                {
+                    "links": {
+                        "first": "https://api.txerpa.com/v1/notify/webhooks?page=1",
+                        "last": "https://api.txerpa.com/v1/notify/webhooks?page=1",
+                        "next": null,
+                        "prev": null
+                    },
+                    "data": [
+                        {
+                            "type": "hook",
+                            "id": "1",
+                            "attributes": {
+                                "last_success_at": "15-06-2017 13:29:44",
+                                "last_failure_at": null,
+                                "last_failure_content": null,
+                                "name": "Invoice creation",
+                                "event_type": "factura.added",
+                                "target": "https://requestb.in/15nqlma1",
+                                "signing_key": "ujbIOID7fSAG980aG0AG9"
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "page": 1,
+                            "pages": 1,
+                            "count": 1
+                        }
+                    }
+                }
+
+## Create [POST]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+
+            {
+                "data": {
+                    "type": "hook",
+                    "attributes": {
+                        "name": "Webhook on invoice update",
+                        "event_type": "factura.changed",
+                        "target": "https://requestb.in/15nqlma1",
+                        "signing_key": "ujbIOID7fSAG980aG0AG9"
+                    }
+                }
+            }
+            
++ Response 200 (application/vnd.api+json)          
+    + Body
+    
+            {
+                "data": {
+                    "type": "hook",
+                    "id": "2",
+                    "attributes": {
+                        "last_success_at": null,
+                        "last_failure_at": null,
+                        "last_failure_content": null,
+                        "name": "Webhook on invoice update",
+                        "event_type": "factura.changed",
+                        "target": "https://requestb.in/15nqlma1",
+                        "signing_key": "ujbIOID7fSAG980aG0AG9"
+                    }
+                }
+            }
+            
+## Retrive [GET /notify/webhooks/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this webhook
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "hook",
+                    "id": "1",
+                    "attributes": {
+                        "last_success_at": "15-06-2017 13:29:44",
+                        "last_failure_at": null,
+                        "last_failure_content": null,
+                        "name": "Invoice creation",
+                        "event_type": "factura.added",
+                        "target": "https://requestb.in/15nqlma1",
+                        "signing_key": "ujbIOID7fSAG980aG0AG9"
+                    }
+                }
+            }
+
+## Update [PATCH /notify/webhooks/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this webhook
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+    
+    + Body
+    
+            {
+                "data": {
+                    "type": "hook",
+                    "id": "1",
+                    "attributes": {
+                        "target": "https://requestb.in/fh2japfs"
+                    }
+                }
+            }
+
++ Response 200 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "hook",
+                    "id": "1",
+                    "attributes": {
+                        "last_success_at": "15-06-2017 13:29:44",
+                        "last_failure_at": null,
+                        "last_failure_content": null,
+                        "name": "Invoice creation",
+                        "event_type": "factura.added",
+                        "target": "https://requestb.in/fh2japfs",
+                        "signing_key": "ujbIOID7fSAG980aG0AG9"
+                    }
+                }
+            }
+
+## Delete [DELETE /notify/webhooks/{id}]
+
++ Parameters
+    + id (number) ... A unique integer value identifying this webhook
+
++ Request
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+            
++ Response 204
+
 
 
 # Data Structures
@@ -7715,4 +7896,28 @@ All accounts must have the same length, wich is defined at the creation of the c
     + Members
         + `01` - Invoice
         + `02` - Payment
-        + `03` - Capital good
+        + `03` - Capital 
+
+## Webhook (object)
++ name - **Maximum length: 120**
++ event_type (enum[string]) - **Unique with target**
+    + Members
+        + `factura.added`
+        + `factura.changed`
+        + `factura.removed`
+        + `partner.added`
+        + `partner.changed`
+        + `partner.removed`
+        + `pago.added`
+        + `pago.changed`
+        + `pago.removed`
+        + `lineaextracto.added`
+        + `lineaextracto.changed`
+        + `dispatch.added`
+        + `dispatch.changed`
+        + `dispatchrecord.changed`
++ target - **Unique with event_type**, **Format: valid URL that accepts POST request**, **Maximum length: 255**
++ signing_key - **Maximum length: 120**
++ last_success_at - **Read Only**, **Format: `datetime`**
++ last_failure_at - **Read Only**, **Format: `datetime`**
++ last_failure_content - **Read Only**, **Maximum length: 320**
