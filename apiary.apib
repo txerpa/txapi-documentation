@@ -5464,6 +5464,63 @@ All accounts must have the same length, wich is defined at the creation of the c
 + Response 204
 
 
+# Partner Data Validation [/partners_validation]
+
+Validate partner data against different services to assure information quality
+
+For AEAT service, the information to be validated is fiscal_name, fiscal_id (nif)
+and country (2 characters ISO code).
+
+The response will be the same data sent with the response attributes
+valid true, false or null in case of error and the error description if available
+
++ Attributes (Partner Data)
+
+## Validate[POST /partners_validation]
+
++ Request (application/vnd.api+json)
+    + Headers
+
+            Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwib3JpZ19pYXQiOjE0OTI3ODY5NDMsInVzZXJfaWQiOjEsImVtYWlsIjoiYWRtaW5AdHhlcnBhLmNvbSIsImV4cCI6MTQ5Mjc4NzI0M30.OquvDQJ9usOtmloXK0XNrjvdFijWbAhDglorQENp2G0
+
+
+    + Body
+    
+            {
+                "data": {
+                    "type": "partner_validation",
+                    "attributes": {
+                        "service": "aeat",
+                        "partners": [{ 
+                            "fiscal_name": "Gil Estarellas ", 
+                            "fiscal_id": "43106975F", 
+                            "country": "ES" 
+                       }]
+                    }
+                }
+            }
+            
++ Response 201 (application/vnd.api+json)
+    + Body
+    
+            {
+                "data": {
+                    "type": "partner_validation",
+                    "id": "None",
+                    "attributes": {
+                        "service": "aeat",
+                        "partners": [{
+                            "fiscal_name": "Gil Estarellas",
+                            "fiscal_id": "43106975F",
+                            "country": "ES",
+                            "valid": true,
+                            "error": null
+                        }]
+                    }
+                }
+            }
+
+
 # Group Products
 **TO-DO** Descripció Products API
 
@@ -7749,6 +7806,12 @@ All accounts must have the same length, wich is defined at the creation of the c
 + integration (required) - **Maximum length: 80**
 + key (required) - **Maximum length: 256**
 + partner (object) - Partner relation object
+
+## Partner Data (object)
++ service (enum[string], required)
+    + Members
+        + `aeat',
++ partners (array[object]) 
 
 ## Product (object)
 + name (required) - **Maximum length: 120**
